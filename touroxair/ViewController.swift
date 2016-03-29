@@ -8,12 +8,18 @@
 
 import UIKit
 
-class ViewController: UIViewController {
+class ViewController: UIViewController, iCarouselDataSource, iCarouselDelegate {
+    
+    // MARK: Properties
+    let carouselItems: [String] = ["StepCarouselImage1", "StepCarouselImage2", "StepCarouselImage3"]
+    @IBOutlet weak var carousel: iCarousel!
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
         updateGradientBackground()
+        
+        carousel.type = .Rotary
     }
 
     override func didRotateFromInterfaceOrientation(fromInterfaceOrientation: UIInterfaceOrientation) {
@@ -35,6 +41,40 @@ class ViewController: UIViewController {
         }
 
         radialGradientBackground.setNeedsDisplay()
+    }
+    
+    // MARK: iCarousel
+    
+    func numberOfItemsInCarousel(carousel: iCarousel) -> Int {
+        return carouselItems.count
+    }
+    
+    func carousel(carousel: iCarousel, viewForItemAtIndex index: Int, reusingView view: UIView?) -> UIView {
+        var itemView: UIImageView
+        
+        //create new view if no view is available for recycling
+        if (view == nil) {
+            //don't do anything specific to the index within
+            //this `if (view == nil) {...}` statement because the view will be
+            //recycled and used with other index values later
+            itemView = UIImageView(frame:CGRect(x:0, y:0, width:200, height:200))
+            itemView.image = UIImage(named: carouselItems[index])
+            itemView.contentMode = .Center
+        }
+        else
+        {
+            //get a reference to the label in the recycled view
+            itemView = view as! UIImageView;
+        }
+        
+        return itemView
+    }
+    
+    func carousel(carousel: iCarousel, valueForOption option: iCarouselOption, withDefault value: CGFloat) -> CGFloat {
+        if (option == .Spacing) {
+            return value * 1.1
+        }
+        return value
     }
 
 }

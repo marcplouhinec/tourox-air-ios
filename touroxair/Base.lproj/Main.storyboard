@@ -6,7 +6,7 @@
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
     </dependencies>
     <scenes>
-        <!--View Controller-->
+        <!--Data Source-->
         <scene sceneID="tne-QT-ifu">
             <objects>
                 <viewController id="BYZ-38-t0r" customClass="ViewController" customModule="touroxair" customModuleProvider="target" sceneMemberID="viewController">
@@ -30,6 +30,14 @@
                                 <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="odo-4L-IYh" customClass="iCarousel">
+                                <rect key="frame" x="20" y="129" width="308" height="264"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <connections>
+                                    <outlet property="dataSource" destination="BYZ-38-t0r" id="Ysm-CM-TSW"/>
+                                    <outlet property="delegate" destination="BYZ-38-t0r" id="J95-5I-Rha"/>
+                                </connections>
+                            </view>
                         </subviews>
                         <color key="backgroundColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
@@ -41,6 +49,9 @@
                             <constraint firstItem="RhK-n7-Cqd" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" id="gTM-Wi-2ea"/>
                         </constraints>
                     </view>
+                    <connections>
+                        <outlet property="carousel" destination="odo-4L-IYh" id="pq2-qP-760"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>

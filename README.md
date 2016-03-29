@@ -33,5 +33,6 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
 Credits
 -------
-The application is based on [Liblinphone](http://www.linphone.org/technical-corner/liblinphone/overview),
-a high level library integrating all the SIP calls feature into a single easy to use API.
+The application is based on:
+* [Liblinphone](http://www.linphone.org/technical-corner/liblinphone/overview), a high level library integrating all the SIP calls feature into a single easy to use API.
+* [iCarousel](https://github.com/nicklockwood/iCarousel), a simple, highly customisable, data-driven 3D carousel for iOS and Mac OS.

@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		9C8C73901CAB18FD00AAF540 /* iCarousel.m in Sources */ = {isa = PBXBuildFile; fileRef = 9C8C738F1CAB18FD00AAF540 /* iCarousel.m */; };
 		9C8FB2331CA9552800A08280 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C8FB2321CA9552800A08280 /* AppDelegate.swift */; };
 		9C8FB2351CA9552800A08280 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C8FB2341CA9552800A08280 /* ViewController.swift */; };
 		9C8FB2381CA9552800A08280 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9C8FB2361CA9552800A08280 /* Main.storyboard */; };
@@ -16,6 +17,9 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		9C8C738E1CAB18FD00AAF540 /* iCarousel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = iCarousel.h; sourceTree = "<group>"; };
+		9C8C738F1CAB18FD00AAF540 /* iCarousel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = iCarousel.m; sourceTree = "<group>"; };
+		9C8C73911CAB198900AAF540 /* touroxair-Bridging-Header.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "touroxair-Bridging-Header.h"; sourceTree = "<group>"; };
 		9C8FB22F1CA9552800A08280 /* touroxair.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = touroxair.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		9C8FB2321CA9552800A08280 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		9C8FB2341CA9552800A08280 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -37,9 +41,19 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		9C8C738D1CAB18FD00AAF540 /* iCarousel */ = {
+			isa = PBXGroup;
+			children = (
+				9C8C738E1CAB18FD00AAF540 /* iCarousel.h */,
+				9C8C738F1CAB18FD00AAF540 /* iCarousel.m */,
+			);
+			path = iCarousel;
+			sourceTree = "<group>";
+		};
 		9C8FB2261CA9552800A08280 = {
 			isa = PBXGroup;
 			children = (
+				9C8C738D1CAB18FD00AAF540 /* iCarousel */,
 				9C8FB2311CA9552800A08280 /* touroxair */,
 				9C8FB2301CA9552800A08280 /* Products */,
 			);
@@ -63,6 +77,7 @@
 				9C8FB23B1CA9552800A08280 /* LaunchScreen.storyboard */,
 				9C8FB23E1CA9552800A08280 /* Info.plist */,
 				9C8FB2441CA9754B00A08280 /* RadialGradientLayer.swift */,
+				9C8C73911CAB198900AAF540 /* touroxair-Bridging-Header.h */,
 			);
 			path = touroxair;
 			sourceTree = "<group>";
@@ -139,6 +154,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				9C8FB2351CA9552800A08280 /* ViewController.swift in Sources */,
+				9C8C73901CAB18FD00AAF540 /* iCarousel.m in Sources */,
 				9C8FB2451CA9754B00A08280 /* RadialGradientLayer.swift in Sources */,
 				9C8FB2331CA9552800A08280 /* AppDelegate.swift in Sources */,
 			);
@@ -260,6 +276,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = io.tourox.air.touroxair;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "touroxair/touroxair-Bridging-Header.h";
 			};
 			name = Debug;
 		};
@@ -272,6 +289,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = io.tourox.air.touroxair;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "touroxair/touroxair-Bridging-Header.h";
 			};
 			name = Release;
 		};
