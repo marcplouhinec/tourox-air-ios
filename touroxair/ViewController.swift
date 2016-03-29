@@ -54,16 +54,12 @@ class ViewController: UIViewController, iCarouselDataSource, iCarouselDelegate {
         
         //create new view if no view is available for recycling
         if (view == nil) {
-            //don't do anything specific to the index within
-            //this `if (view == nil) {...}` statement because the view will be
-            //recycled and used with other index values later
             itemView = UIImageView(frame:CGRect(x:0, y:0, width:200, height:200))
             itemView.image = UIImage(named: carouselItems[index])
             itemView.contentMode = .Center
         }
         else
         {
-            //get a reference to the label in the recycled view
             itemView = view as! UIImageView;
         }
         
@@ -72,7 +68,7 @@ class ViewController: UIViewController, iCarouselDataSource, iCarouselDelegate {
     
     func carousel(carousel: iCarousel, valueForOption option: iCarouselOption, withDefault value: CGFloat) -> CGFloat {
         if (option == .Spacing) {
-            return value * 1.1
+            return value * 1.5
         }
         return value
     }

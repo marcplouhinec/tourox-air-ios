@@ -30,9 +30,12 @@
                                 <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="odo-4L-IYh" customClass="iCarousel">
-                                <rect key="frame" x="20" y="129" width="308" height="264"/>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="odo-4L-IYh" customClass="iCarousel">
+                                <rect key="frame" x="20" y="129" width="560" height="200"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="200" id="H38-yw-CZf"/>
+                                </constraints>
                                 <connections>
                                     <outlet property="dataSource" destination="BYZ-38-t0r" id="Ysm-CM-TSW"/>
                                     <outlet property="delegate" destination="BYZ-38-t0r" id="J95-5I-Rha"/>
@@ -45,8 +48,12 @@
                             <constraint firstItem="RhK-n7-Cqd" firstAttribute="trailing" secondItem="8bC-Xf-vdC" secondAttribute="trailingMargin" id="EBu-e5-uAO"/>
                             <constraint firstItem="QlU-Y8-kJn" firstAttribute="trailing" secondItem="8bC-Xf-vdC" secondAttribute="trailingMargin" id="ETs-S8-heT"/>
                             <constraint firstItem="RhK-n7-Cqd" firstAttribute="top" secondItem="QlU-Y8-kJn" secondAttribute="bottom" constant="8" id="VYn-tn-BEC"/>
+                            <constraint firstItem="odo-4L-IYh" firstAttribute="top" secondItem="RhK-n7-Cqd" secondAttribute="bottom" constant="8" id="ZL8-Rr-tmr"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="odo-4L-IYh" secondAttribute="trailing" constant="99" id="bhN-t7-PRF"/>
+                            <constraint firstItem="odo-4L-IYh" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" id="cVA-fi-gwL"/>
                             <constraint firstItem="QlU-Y8-kJn" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" id="dHD-0U-daR"/>
                             <constraint firstItem="RhK-n7-Cqd" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" id="gTM-Wi-2ea"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="odo-4L-IYh" secondAttribute="trailing" id="xPV-K3-uni"/>
                         </constraints>
                     </view>
                     <connections>
