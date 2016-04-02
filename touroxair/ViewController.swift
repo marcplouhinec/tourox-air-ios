@@ -54,9 +54,9 @@ class ViewController: UIViewController, iCarouselDataSource, iCarouselDelegate {
         
         //create new view if no view is available for recycling
         if (view == nil) {
-            itemView = UIImageView(frame:CGRect(x:0, y:0, width:200, height:200))
+            itemView = UIImageView(frame:CGRect(x:0, y:0, width:160, height:160))
             itemView.image = UIImage(named: carouselItems[index])
-            itemView.contentMode = .Center
+            itemView.contentMode = .ScaleToFill
         }
         else
         {
@@ -68,7 +68,7 @@ class ViewController: UIViewController, iCarouselDataSource, iCarouselDelegate {
     
     func carousel(carousel: iCarousel, valueForOption option: iCarouselOption, withDefault value: CGFloat) -> CGFloat {
         if (option == .Spacing) {
-            return value * 1.5
+            return value * 4
         }
         return value
     }
