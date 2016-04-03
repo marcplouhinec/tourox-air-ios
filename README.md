@@ -36,3 +36,4 @@ Credits
 The application is based on:
 * [Liblinphone](http://www.linphone.org/technical-corner/liblinphone/overview), a high level library integrating all the SIP calls feature into a single easy to use API.
 * [iCarousel](https://github.com/nicklockwood/iCarousel), a simple, highly customisable, data-driven 3D carousel for iOS and Mac OS.
+* [Material icons](https://design.google.com/icons/), beautifully crafted, delightful, and easy to use in web, Android, and iOS projects.
