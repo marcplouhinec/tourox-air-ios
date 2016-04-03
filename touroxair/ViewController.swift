@@ -7,12 +7,15 @@
 //
 
 import UIKit
+import AVFoundation
+import MediaPlayer
 
 class ViewController: UIViewController, iCarouselDataSource, iCarouselDelegate {
     
     // MARK: Properties
     let carouselItems: [String] = ["StepCarouselImage1", "StepCarouselImage2", "StepCarouselImage3"]
     @IBOutlet weak var carousel: iCarousel!
+    @IBOutlet weak var volumeControl: VolumeControl!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -20,6 +23,9 @@ class ViewController: UIViewController, iCarouselDataSource, iCarouselDelegate {
         updateGradientBackground()
         
         carousel.type = .Rotary
+        
+        let mpVolumeView = MPVolumeView(frame: volumeControl.bounds)
+        volumeControl.addSubview(mpVolumeView)
     }
 
     override func didRotateFromInterfaceOrientation(fromInterfaceOrientation: UIInterfaceOrientation) {
