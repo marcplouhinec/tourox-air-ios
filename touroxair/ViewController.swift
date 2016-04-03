@@ -15,6 +15,7 @@ class ViewController: UIViewController, iCarouselDataSource, iCarouselDelegate {
     // MARK: Properties
     let carouselItems: [String] = ["StepCarouselImage1", "StepCarouselImage2", "StepCarouselImage3"]
     @IBOutlet weak var carousel: iCarousel!
+    @IBOutlet weak var stepDescriptionLabel: UILabel!
     @IBOutlet weak var volumeControl: VolumeControl!
     
     override func viewDidLoad() {
@@ -23,6 +24,7 @@ class ViewController: UIViewController, iCarouselDataSource, iCarouselDelegate {
         updateGradientBackground()
         
         carousel.type = .Rotary
+        onVoipConnectionStateChanged(.NOT_CONNECTED)
         
         let mpVolumeView = MPVolumeView(frame: volumeControl.bounds)
         volumeControl.addSubview(mpVolumeView)
@@ -79,5 +81,21 @@ class ViewController: UIViewController, iCarouselDataSource, iCarouselDelegate {
         return value
     }
 
+    func onVoipConnectionStateChanged(state: VoipConnectionState) {
+        switch state {
+        case .NOT_CONNECTED:
+            carousel.scrollToItemAtIndex(0, animated: true)
+            stepDescriptionLabel.text = "Connecting to the router…"
+        case .UNABLE_TO_CONNECT:
+            carousel.scrollToItemAtIndex(0, animated: true)
+            stepDescriptionLabel.text = "Error: unable to connect with the router VoIP!"
+        case .CONNECTED_WAITING_FOR_CALL:
+            carousel.scrollToItemAtIndex(1, animated: true)
+            stepDescriptionLabel.text = "Waiting for the guide to start the communication…"
+        case .ONGOING_CALL:
+            carousel.scrollToItemAtIndex(2, animated: true)
+            stepDescriptionLabel.text = "Communication ongoing"
+        }
+    }
 }
 

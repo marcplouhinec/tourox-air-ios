@@ -24,13 +24,13 @@
                                     <constraint firstAttribute="height" constant="42" id="iTk-09-Xhg"/>
                                 </constraints>
                             </imageView>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" placeholderIntrinsicWidth="253" placeholderIntrinsicHeight="21" text="Listen to your guide comfortably!" textAlignment="center" lineBreakMode="wordWrap" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="RhK-n7-Cqd">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" placeholderIntrinsicWidth="253" placeholderIntrinsicHeight="21" text="Listen to your guide comfortably!" textAlignment="center" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" preferredMaxLayoutWidth="0.0" translatesAutoresizingMaskIntoConstraints="NO" id="RhK-n7-Cqd">
                                 <rect key="frame" x="20" y="100" width="560" height="21"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="19"/>
                                 <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="odo-4L-IYh" customClass="iCarousel">
+                            <view userInteractionEnabled="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="odo-4L-IYh" customClass="iCarousel">
                                 <rect key="frame" x="20" y="153" width="560" height="180"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 <constraints>
@@ -41,7 +41,7 @@
                                     <outlet property="delegate" destination="BYZ-38-t0r" id="J95-5I-Rha"/>
                                 </connections>
                             </view>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Connecting to the router…" textAlignment="center" lineBreakMode="wordWrap" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="QCO-bJ-exi">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Connecting to the router…" textAlignment="center" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" preferredMaxLayoutWidth="0.0" translatesAutoresizingMaskIntoConstraints="NO" id="QCO-bJ-exi">
                                 <rect key="frame" x="20" y="341" width="560" height="21"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -94,6 +94,7 @@
                     </view>
                     <connections>
                         <outlet property="carousel" destination="odo-4L-IYh" id="pq2-qP-760"/>
+                        <outlet property="stepDescriptionLabel" destination="QCO-bJ-exi" id="axi-rw-zNO"/>
                         <outlet property="volumeControl" destination="Mp8-hf-OL8" id="MwH-6u-HqL"/>
                     </connections>
                 </viewController>
