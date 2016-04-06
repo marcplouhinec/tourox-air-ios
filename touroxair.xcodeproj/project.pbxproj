@@ -14,6 +14,7 @@
 		9C8FB23A1CA9552800A08280 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 9C8FB2391CA9552800A08280 /* Assets.xcassets */; };
 		9C8FB23D1CA9552800A08280 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9C8FB23B1CA9552800A08280 /* LaunchScreen.storyboard */; };
 		9C8FB2451CA9754B00A08280 /* RadialGradientLayer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C8FB2441CA9754B00A08280 /* RadialGradientLayer.swift */; };
+		9C9A7BA41CB5A6C500E79685 /* NetworkUtils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C9A7BA31CB5A6C500E79685 /* NetworkUtils.swift */; };
 		9CF3D0581CB1307600ACBF47 /* VoipConnectionState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CF3D0571CB1307600ACBF47 /* VoipConnectionState.swift */; };
 		9CF3D05A1CB1582D00ACBF47 /* VolumeControl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CF3D0591CB1582D00ACBF47 /* VolumeControl.swift */; };
 /* End PBXBuildFile section */
@@ -30,6 +31,7 @@
 		9C8FB23C1CA9552800A08280 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		9C8FB23E1CA9552800A08280 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		9C8FB2441CA9754B00A08280 /* RadialGradientLayer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RadialGradientLayer.swift; sourceTree = "<group>"; };
+		9C9A7BA31CB5A6C500E79685 /* NetworkUtils.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NetworkUtils.swift; sourceTree = "<group>"; };
 		9CF3D0571CB1307600ACBF47 /* VoipConnectionState.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VoipConnectionState.swift; sourceTree = "<group>"; };
 		9CF3D0591CB1582D00ACBF47 /* VolumeControl.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VolumeControl.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -74,6 +76,7 @@
 		9C8FB2311CA9552800A08280 /* touroxair */ = {
 			isa = PBXGroup;
 			children = (
+				9C9A7BA21CB5A6AC00E79685 /* utils */,
 				9CF3D0561CB1304A00ACBF47 /* enums */,
 				9C8FB2321CA9552800A08280 /* AppDelegate.swift */,
 				9C8FB2341CA9552800A08280 /* ViewController.swift */,
@@ -86,6 +89,14 @@
 				9CF3D0591CB1582D00ACBF47 /* VolumeControl.swift */,
 			);
 			path = touroxair;
+			sourceTree = "<group>";
+		};
+		9C9A7BA21CB5A6AC00E79685 /* utils */ = {
+			isa = PBXGroup;
+			children = (
+				9C9A7BA31CB5A6C500E79685 /* NetworkUtils.swift */,
+			);
+			name = utils;
 			sourceTree = "<group>";
 		};
 		9CF3D0561CB1304A00ACBF47 /* enums */ = {
@@ -172,6 +183,7 @@
 				9C8FB2451CA9754B00A08280 /* RadialGradientLayer.swift in Sources */,
 				9CF3D0581CB1307600ACBF47 /* VoipConnectionState.swift in Sources */,
 				9C8FB2331CA9552800A08280 /* AppDelegate.swift in Sources */,
+				9C9A7BA41CB5A6C500E79685 /* NetworkUtils.swift in Sources */,
 				9CF3D05A1CB1582D00ACBF47 /* VolumeControl.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

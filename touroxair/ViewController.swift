@@ -14,6 +14,7 @@ class ViewController: UIViewController, iCarouselDataSource, iCarouselDelegate {
     
     // MARK: Properties
     let carouselItems: [String] = ["StepCarouselImage1", "StepCarouselImage2"]
+    let errorDialogDelegate = ErrorDialogDelegate()
     @IBOutlet weak var carousel: iCarousel!
     @IBOutlet weak var stepDescriptionLabel: UILabel!
     @IBOutlet weak var volumeControl: VolumeControl!
@@ -21,13 +22,30 @@ class ViewController: UIViewController, iCarouselDataSource, iCarouselDelegate {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        // Initialize the background
         updateGradientBackground()
         
+        // Initialize the carousel
         carousel.type = .Rotary
         onVoipConnectionStateChanged(.NOT_CONNECTED)
         
+        // Initialize the volume control
         let mpVolumeView = MPVolumeView(frame: volumeControl.bounds)
         volumeControl.addSubview(mpVolumeView)
+        
+        // Get the current IP address of the WIFI connection and check it is correct
+        let wifiAddress = NetworkUtils.getWiFiAddress();
+        if wifiAddress == nil {
+            showUnrecoverableErrorDialog("No WIFI connection detected!", message: "Please connect to the guide\'s WIFI router and restart the application.")
+            return;
+        }
+        if !wifiAddress!.hasPrefix("192.168.85.") {
+            showUnrecoverableErrorDialog("Wrong WIFI connection detected!", message: "Please connect to a WIFI network starting with the word \'tourox\' and restart the application.")
+            return;
+        }
+        
+        // Start the VOIP service
+        // TODO
     }
 
     override func didRotateFromInterfaceOrientation(fromInterfaceOrientation: UIInterfaceOrientation) {
@@ -49,6 +67,28 @@ class ViewController: UIViewController, iCarouselDataSource, iCarouselDelegate {
         }
 
         radialGradientBackground.setNeedsDisplay()
+    }
+    
+    // MARK: Error message
+    
+    class ErrorDialogDelegate: NSObject, UIAlertViewDelegate {
+        func alertView(alertView: UIAlertView, clickedButtonAtIndex buttonIndex: Int) {
+            // There is only one button: "ignore", so make sure the user understands that he cannot go further
+            let alert = UIAlertView()
+            alert.title = "Ignore an error"
+            alert.message = "You chose to ignore an error. Please note that the application cannot run normally."
+            alert.addButtonWithTitle("Dismiss")
+            alert.show()
+        }
+    }
+    
+    func showUnrecoverableErrorDialog(title: String, message: String) {
+        let alert = UIAlertView()
+        alert.title = title
+        alert.message = message
+        alert.addButtonWithTitle("Ignore")
+        alert.delegate = errorDialogDelegate
+        alert.show()
     }
     
     // MARK: iCarousel
