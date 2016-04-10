@@ -15,6 +15,9 @@
 		9C8FB23D1CA9552800A08280 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9C8FB23B1CA9552800A08280 /* LaunchScreen.storyboard */; };
 		9C8FB2451CA9754B00A08280 /* RadialGradientLayer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C8FB2441CA9754B00A08280 /* RadialGradientLayer.swift */; };
 		9C9A7BA41CB5A6C500E79685 /* NetworkUtils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C9A7BA31CB5A6C500E79685 /* NetworkUtils.swift */; };
+		9CD87E2B1CBA63980095C270 /* libxml2.2.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 9CD87E2A1CBA63980095C270 /* libxml2.2.tbd */; };
+		9CD87E2D1CBA63CC0095C270 /* libresolv.9.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 9CD87E2C1CBA63CC0095C270 /* libresolv.9.tbd */; };
+		9CD87E2F1CBA63DF0095C270 /* libsqlite3.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 9CD87E2E1CBA63DF0095C270 /* libsqlite3.tbd */; };
 		9CE8F8A01CB8E4ED00E56457 /* libantlr3c.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 9CE8F63B1CB8E4EC00E56457 /* libantlr3c.a */; };
 		9CE8F8A11CB8E4ED00E56457 /* libavcodec.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 9CE8F63C1CB8E4EC00E56457 /* libavcodec.a */; };
 		9CE8F8A21CB8E4ED00E56457 /* libavutil.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 9CE8F63D1CB8E4EC00E56457 /* libavutil.a */; };
@@ -72,6 +75,9 @@
 		9C8FB23E1CA9552800A08280 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		9C8FB2441CA9754B00A08280 /* RadialGradientLayer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RadialGradientLayer.swift; sourceTree = "<group>"; };
 		9C9A7BA31CB5A6C500E79685 /* NetworkUtils.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NetworkUtils.swift; sourceTree = "<group>"; };
+		9CD87E2A1CBA63980095C270 /* libxml2.2.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libxml2.2.tbd; path = usr/lib/libxml2.2.tbd; sourceTree = SDKROOT; };
+		9CD87E2C1CBA63CC0095C270 /* libresolv.9.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libresolv.9.tbd; path = usr/lib/libresolv.9.tbd; sourceTree = SDKROOT; };
+		9CD87E2E1CBA63DF0095C270 /* libsqlite3.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libsqlite3.tbd; path = usr/lib/libsqlite3.tbd; sourceTree = SDKROOT; };
 		9CE8F4871CB8E4EC00E56457 /* antlr3.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = antlr3.h; sourceTree = "<group>"; };
 		9CE8F4881CB8E4EC00E56457 /* antlr3baserecognizer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = antlr3baserecognizer.h; sourceTree = "<group>"; };
 		9CE8F4891CB8E4EC00E56457 /* antlr3basetree.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = antlr3basetree.h; sourceTree = "<group>"; };
@@ -525,6 +531,9 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				9CD87E2F1CBA63DF0095C270 /* libsqlite3.tbd in Frameworks */,
+				9CD87E2D1CBA63CC0095C270 /* libresolv.9.tbd in Frameworks */,
+				9CD87E2B1CBA63980095C270 /* libxml2.2.tbd in Frameworks */,
 				9CE8F8C21CB8E4ED00E56457 /* libmssilk.a in Frameworks */,
 				9CE8F8B91CB8E4ED00E56457 /* libswresample.a in Frameworks */,
 				9CE8F8A21CB8E4ED00E56457 /* libavutil.a in Frameworks */,
@@ -580,6 +589,9 @@
 		9C8FB2261CA9552800A08280 = {
 			isa = PBXGroup;
 			children = (
+				9CD87E2E1CBA63DF0095C270 /* libsqlite3.tbd */,
+				9CD87E2C1CBA63CC0095C270 /* libresolv.9.tbd */,
+				9CD87E2A1CBA63980095C270 /* libxml2.2.tbd */,
 				9CE8F4851CB8E4EC00E56457 /* liblinphone */,
 				9C8C738D1CAB18FD00AAF540 /* iCarousel */,
 				9C8FB2311CA9552800A08280 /* touroxair */,
@@ -1586,9 +1598,11 @@
 					"$(PROJECT_DIR)/liblinphone/lib",
 					"$(PROJECT_DIR)/liblinphone/lib/mediastreamer/plugins",
 				);
+				ONLY_ACTIVE_ARCH = YES;
 				PRODUCT_BUNDLE_IDENTIFIER = io.tourox.air.touroxair;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_OBJC_BRIDGING_HEADER = "touroxair/touroxair-Bridging-Header.h";
+				VALID_ARCHS = "armv7 armv7s arm64";
 			};
 			name = Debug;
 		};
@@ -1614,6 +1628,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = io.tourox.air.touroxair;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_OBJC_BRIDGING_HEADER = "touroxair/touroxair-Bridging-Header.h";
+				VALID_ARCHS = "armv7 armv7s arm64";
 			};
 			name = Release;
 		};
