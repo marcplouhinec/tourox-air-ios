@@ -7,6 +7,13 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		9C6F622F1CBC45140011B22E /* linphonerc in Resources */ = {isa = PBXBuildFile; fileRef = 9C6F62291CBC45140011B22E /* linphonerc */; };
+		9C6F62301CBC45140011B22E /* linphonerc_factory in Resources */ = {isa = PBXBuildFile; fileRef = 9C6F622A1CBC45140011B22E /* linphonerc_factory */; };
+		9C6F623C1CBC56AF0011B22E /* hold.mkv in Resources */ = {isa = PBXBuildFile; fileRef = 9C6F62361CBC56AF0011B22E /* hold.mkv */; };
+		9C6F623D1CBC56AF0011B22E /* msg.caf in Resources */ = {isa = PBXBuildFile; fileRef = 9C6F62371CBC56AF0011B22E /* msg.caf */; };
+		9C6F623E1CBC56AF0011B22E /* ringback.wav in Resources */ = {isa = PBXBuildFile; fileRef = 9C6F62381CBC56AF0011B22E /* ringback.wav */; };
+		9C6F623F1CBC56AF0011B22E /* notes_of_the_optimistic.caf in Resources */ = {isa = PBXBuildFile; fileRef = 9C6F623A1CBC56AF0011B22E /* notes_of_the_optimistic.caf */; };
+		9C6F62401CBC56AF0011B22E /* shortring.caf in Resources */ = {isa = PBXBuildFile; fileRef = 9C6F623B1CBC56AF0011B22E /* shortring.caf */; };
 		9C8C73901CAB18FD00AAF540 /* iCarousel.m in Sources */ = {isa = PBXBuildFile; fileRef = 9C8C738F1CAB18FD00AAF540 /* iCarousel.m */; };
 		9C8FB2331CA9552800A08280 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C8FB2321CA9552800A08280 /* AppDelegate.swift */; };
 		9C8FB2351CA9552800A08280 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C8FB2341CA9552800A08280 /* ViewController.swift */; };
@@ -63,6 +70,13 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		9C6F62291CBC45140011B22E /* linphonerc */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = linphonerc; sourceTree = "<group>"; };
+		9C6F622A1CBC45140011B22E /* linphonerc_factory */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = linphonerc_factory; sourceTree = "<group>"; };
+		9C6F62361CBC56AF0011B22E /* hold.mkv */ = {isa = PBXFileReference; lastKnownFileType = file; path = hold.mkv; sourceTree = "<group>"; };
+		9C6F62371CBC56AF0011B22E /* msg.caf */ = {isa = PBXFileReference; lastKnownFileType = file; path = msg.caf; sourceTree = "<group>"; };
+		9C6F62381CBC56AF0011B22E /* ringback.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = ringback.wav; sourceTree = "<group>"; };
+		9C6F623A1CBC56AF0011B22E /* notes_of_the_optimistic.caf */ = {isa = PBXFileReference; lastKnownFileType = file; path = notes_of_the_optimistic.caf; sourceTree = "<group>"; };
+		9C6F623B1CBC56AF0011B22E /* shortring.caf */ = {isa = PBXFileReference; lastKnownFileType = file; path = shortring.caf; sourceTree = "<group>"; };
 		9C8C738E1CAB18FD00AAF540 /* iCarousel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = iCarousel.h; sourceTree = "<group>"; };
 		9C8C738F1CAB18FD00AAF540 /* iCarousel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = iCarousel.m; sourceTree = "<group>"; };
 		9C8C73911CAB198900AAF540 /* touroxair-Bridging-Header.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "touroxair-Bridging-Header.h"; sourceTree = "<group>"; };
@@ -577,6 +591,26 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		9C6F62351CBC56AF0011B22E /* sounds */ = {
+			isa = PBXGroup;
+			children = (
+				9C6F62361CBC56AF0011B22E /* hold.mkv */,
+				9C6F62371CBC56AF0011B22E /* msg.caf */,
+				9C6F62381CBC56AF0011B22E /* ringback.wav */,
+				9C6F62391CBC56AF0011B22E /* ringtones */,
+				9C6F623B1CBC56AF0011B22E /* shortring.caf */,
+			);
+			path = sounds;
+			sourceTree = "<group>";
+		};
+		9C6F62391CBC56AF0011B22E /* ringtones */ = {
+			isa = PBXGroup;
+			children = (
+				9C6F623A1CBC56AF0011B22E /* notes_of_the_optimistic.caf */,
+			);
+			path = ringtones;
+			sourceTree = "<group>";
+		};
 		9C8C738D1CAB18FD00AAF540 /* iCarousel */ = {
 			isa = PBXGroup;
 			children = (
@@ -610,6 +644,9 @@
 		9C8FB2311CA9552800A08280 /* touroxair */ = {
 			isa = PBXGroup;
 			children = (
+				9C6F62351CBC56AF0011B22E /* sounds */,
+				9C6F62291CBC45140011B22E /* linphonerc */,
+				9C6F622A1CBC45140011B22E /* linphonerc_factory */,
 				9CE8FAEF1CB8EA5D00E56457 /* services */,
 				9C9A7BA21CB5A6AC00E79685 /* utils */,
 				9CF3D0561CB1304A00ACBF47 /* enums */,
@@ -1446,9 +1483,16 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				9C6F622F1CBC45140011B22E /* linphonerc in Resources */,
+				9C6F623E1CBC56AF0011B22E /* ringback.wav in Resources */,
 				9C8FB23D1CA9552800A08280 /* LaunchScreen.storyboard in Resources */,
 				9C8FB23A1CA9552800A08280 /* Assets.xcassets in Resources */,
+				9C6F623F1CBC56AF0011B22E /* notes_of_the_optimistic.caf in Resources */,
+				9C6F623D1CBC56AF0011B22E /* msg.caf in Resources */,
+				9C6F62301CBC45140011B22E /* linphonerc_factory in Resources */,
 				9C8FB2381CA9552800A08280 /* Main.storyboard in Resources */,
+				9C6F623C1CBC56AF0011B22E /* hold.mkv in Resources */,
+				9C6F62401CBC56AF0011B22E /* shortring.caf in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
