@@ -19,6 +19,9 @@ class VoipServiceImpl: VoipService {
     var userData = NSObject()
     var linphoneConfig: COpaquePointer?
     var linphoneCore: COpaquePointer?
+    var hostname: String?
+    var isInConference = false
+    var timer: NSTimer? = nil
     
     init() {
         // Initialize the LinphoneCoreVTable
@@ -67,12 +70,12 @@ class VoipServiceImpl: VoipService {
 
         // Create the LinphoneCore object
         linphoneCore = linphone_core_new_with_config(&linphoneCoreVTable, linphoneConfig!, &userData)
-        
-        // TODO https://github.com/BelledonneCommunications/linphone-iphone/blob/master/Classes/LinphoneManager.m#L1505
     }
     
     func destroy() {
-        // TODO
+        if let currentLinphoneCore = linphoneCore {
+            linphone_core_destroy(currentLinphoneCore)
+        }
     }
     
     func registerVoipConnectionStateChangedListener(listener: VoipConnectionStateChangedListener) {
@@ -80,11 +83,44 @@ class VoipServiceImpl: VoipService {
     }
     
     func openConnection(username: String, password: String, hostname: String) {
-        // TODO
+        self.hostname = hostname
+        
+        let authInfo = linphone_auth_info_new(NSString(string: username).UTF8String, nil, NSString(string: password).UTF8String, nil, nil, NSString(string: hostname).UTF8String)
+        linphone_core_add_auth_info(linphoneCore!, authInfo)
+        
+        let proxyConfig = linphone_core_create_proxy_config(linphoneCore!)
+        linphone_proxy_config_set_identity(proxyConfig, NSString(string: "sip:" + username + "@" + hostname).UTF8String)
+        linphone_proxy_config_set_server_addr(proxyConfig, NSString(string: hostname).UTF8String)
+        linphone_proxy_config_enable_register(proxyConfig, 1)
+        linphone_core_add_proxy_config(linphoneCore!, proxyConfig)
+        
+        linphone_core_iterate(linphoneCore!);
+        timer = NSTimer.scheduledTimerWithTimeInterval(0.02, target: self, selector: #selector(linphoneCoreIterate), userInfo: nil, repeats: true)
+        
+        linphone_core_set_network_reachable(linphoneCore!, 1)
+    }
+    
+    @objc private func linphoneCoreIterate() {
+        linphone_core_iterate(linphoneCore!);
     }
     
     func closeConnection() {
-        // TODO
+        isInConference = false;
+        
+        if let currentLinphoneCore = linphoneCore {
+            let currentCall = linphone_core_get_current_call(currentLinphoneCore)
+            if currentCall != nil {
+                linphone_core_terminate_call(currentLinphoneCore, currentCall)
+            }
+        }
+        
+        if let currentTimer = timer {
+            currentTimer.invalidate()
+        }
+        
+        if let currentLinphoneCore = linphoneCore {
+            linphone_core_set_network_reachable(currentLinphoneCore, 0)
+        }
     }
     
     func getVoipConnectionState() -> VoipConnectionState {
@@ -131,23 +167,6 @@ class VoipServiceImpl: VoipService {
     }
     
     // Thanks to https://github.com/BelledonneCommunications/linphone-iphone/blob/master/Classes/LinphoneManager.m#L2206
-    private func lpConfigStringForKey(key: String?, inSection: String) -> NSString? {
-        return self.lpConfigStringForKey(key, inSection: inSection, withDefault: nil)
-    }
-    
-    private func lpConfigStringForKey(key: String?, inSection: String, withDefault: String?) -> NSString? {
-        if key == nil {
-            return withDefault
-        }
-        
-        let value = lp_config_get_string(linphoneConfig!, NSString(string: inSection).UTF8String, NSString(string: key!).UTF8String, nil)
-        if value == nil {
-            return withDefault
-        } else {
-            return NSString(UTF8String: value)
-        }
-    }
-    
     private func lpConfigSetString(value: String, key: String, inSection: String) {
         lp_config_set_string(linphoneConfig!, NSString(string: inSection).UTF8String, NSString(string: key).UTF8String, NSString(string: value).UTF8String);
     }
