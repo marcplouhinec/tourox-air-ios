@@ -45,7 +45,18 @@ class ViewController: UIViewController, iCarouselDataSource, iCarouselDelegate {
         }
         
         // Start the VOIP service
-        // TODO
+        let voipService = ApplicationServices.getVoipService()
+        if voipService.getVoipConnectionState() == .NOT_CONNECTED {
+            let usernameSuffixIndex = wifiAddress!.rangeOfString(".", options: .BackwardsSearch)?.endIndex
+            let username = "u" + wifiAddress!.substringFromIndex(usernameSuffixIndex!)
+            let hostname = "192.168.85.1"
+            print("Computed configuration: username = " + username + ", hostname = " + hostname)
+            
+            // Open the connection with the VoIP server
+            voipService.initialize({(state: VoipConnectionState) -> Void in
+                //print("VoidService event: " + state)
+            })
+        }
     }
 
     override func didRotateFromInterfaceOrientation(fromInterfaceOrientation: UIInterfaceOrientation) {

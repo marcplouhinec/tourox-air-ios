@@ -16,42 +16,58 @@ class VoipServiceImpl: VoipService {
     
     var linphoneCoreVTable = LinphoneCoreVTable()
     var currentVoipConnectionState = VoipConnectionState.NOT_CONNECTED
-    var userData = NSObject()
     var linphoneConfig: COpaquePointer?
     var linphoneCore: COpaquePointer?
     var hostname: String?
     var isInConference = false
     var timer: NSTimer? = nil
+    var listener: (state: VoipConnectionState) -> Void = {(state: VoipConnectionState) -> Void in}
+    var thisService : VoipServiceImpl?
     
-    init() {
+    // Thanks to https://github.com/BelledonneCommunications/linphone-iphone/blob/master/Classes/LinphoneManager.m#L1475
+    func initialize(listener: (state: VoipConnectionState) -> Void) {
+        self.listener = listener
+        
         // Initialize the LinphoneCoreVTable
         linphoneCoreVTable.call_state_changed = { (lc, call, state, message) -> Void in
-            print("TODO call_state_changed")
+            let messageAsString = message == nil ? "" : NSString(UTF8String: message)!
+            print("call_state_changed: state = \(state), message = \(messageAsString)")
+            
+            if state.rawValue == LinphoneCallConnected.rawValue {
+                let thisServicePointer = linphone_core_get_user_data(lc);
+                print(thisServicePointer)
+                //let thisService = thisServicePointer.memory as! VoipServiceImpl
+                //thisService.notifyVoipConnectionStateChange(.ONGOING_CALL)
+            }
         }
         linphoneCoreVTable.registration_state_changed = { (lc, cfg, state, message) -> Void in
-            print("TODO registration_state_changed")
+            let messageAsString = message == nil ? "" : NSString(UTF8String: message)!
+            print("registration_state_changed: state = \(state), message = \(messageAsString)")
+            
         }
         linphoneCoreVTable.notify_presence_received = nil
         linphoneCoreVTable.new_subscription_requested = nil
         linphoneCoreVTable.auth_info_requested = { (lc, realm, username, domain) -> Void in
-            print("TODO auth_info_requested")
+            let realmAsString = realm == nil ? "" : NSString(UTF8String: realm)!
+            let usernameAsString = username == nil ? "" : NSString(UTF8String: username)!
+            let domainAsString = domain == nil ? "" : NSString(UTF8String: domain)!
+            print("auth_info_requested: realm = \(realmAsString), username = \(usernameAsString), domain = \(domainAsString)")
         }
         linphoneCoreVTable.message_received = nil
         linphoneCoreVTable.dtmf_received = nil
         linphoneCoreVTable.transfer_state_changed = nil
         linphoneCoreVTable.is_composing_received = nil
         linphoneCoreVTable.configuring_status = {(lc, status, message) -> Void in
-            print("TODO configuring_status")
+            let messageAsString = message == nil ? "" : NSString(UTF8String: message)!
+            print("configuring_status: state = \(status), message = \(messageAsString)")
         }
         linphoneCoreVTable.global_state_changed = {(lc, state, message) -> Void in
-            print("TODO global_state_changed")
+            let messageAsString = message == nil ? "" : NSString(UTF8String: message)!
+            print("global_state_changed: state = \(state), message = \(messageAsString)")
         }
         linphoneCoreVTable.notify_received = nil
         linphoneCoreVTable.call_encryption_changed = nil
-    }
-    
-    // Thanks to https://github.com/BelledonneCommunications/linphone-iphone/blob/master/Classes/LinphoneManager.m#L1475
-    func initialize() {
+
         // Prepare the LibLinphone configuration
         let resourceLinphonercPath = bundleFile("linphonerc")
         let linphonercPath = documentFile("linphonerc")
@@ -69,17 +85,14 @@ class VoipServiceImpl: VoipService {
         lpConfigSetString(bundleFile(hold)!, key: "hold_music", inSection: "sound")
 
         // Create the LinphoneCore object
-        linphoneCore = linphone_core_new_with_config(&linphoneCoreVTable, linphoneConfig!, &userData)
+        thisService = self;
+        linphoneCore = linphone_core_new_with_config(&linphoneCoreVTable, linphoneConfig!, &thisService)
     }
     
     func destroy() {
         if let currentLinphoneCore = linphoneCore {
             linphone_core_destroy(currentLinphoneCore)
         }
-    }
-    
-    func registerVoipConnectionStateChangedListener(listener: VoipConnectionStateChangedListener) {
-        // TODO
     }
     
     func openConnection(username: String, password: String, hostname: String) {
@@ -121,10 +134,22 @@ class VoipServiceImpl: VoipService {
         if let currentLinphoneCore = linphoneCore {
             linphone_core_set_network_reachable(currentLinphoneCore, 0)
         }
+        
+        notifyVoipConnectionStateChange(.NOT_CONNECTED)
     }
     
     func getVoipConnectionState() -> VoipConnectionState {
         return currentVoipConnectionState
+    }
+    
+    private func notifyVoipConnectionStateChange(state: VoipConnectionState) {
+        if currentVoipConnectionState == state {
+            return
+        }
+        
+        currentVoipConnectionState = state
+        
+        listener(state: currentVoipConnectionState)
     }
     
     // Thanks to https://github.com/BelledonneCommunications/linphone-iphone/blob/master/Classes/LinphoneManager.m#L2089

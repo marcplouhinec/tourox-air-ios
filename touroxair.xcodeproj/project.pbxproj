@@ -14,6 +14,7 @@
 		9C6F623E1CBC56AF0011B22E /* ringback.wav in Resources */ = {isa = PBXBuildFile; fileRef = 9C6F62381CBC56AF0011B22E /* ringback.wav */; };
 		9C6F623F1CBC56AF0011B22E /* notes_of_the_optimistic.caf in Resources */ = {isa = PBXBuildFile; fileRef = 9C6F623A1CBC56AF0011B22E /* notes_of_the_optimistic.caf */; };
 		9C6F62401CBC56AF0011B22E /* shortring.caf in Resources */ = {isa = PBXBuildFile; fileRef = 9C6F623B1CBC56AF0011B22E /* shortring.caf */; };
+		9C7D81781CC0D50100551E73 /* ApplicationServices.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C7D81771CC0D50100551E73 /* ApplicationServices.swift */; };
 		9C8C73901CAB18FD00AAF540 /* iCarousel.m in Sources */ = {isa = PBXBuildFile; fileRef = 9C8C738F1CAB18FD00AAF540 /* iCarousel.m */; };
 		9C8FB2331CA9552800A08280 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C8FB2321CA9552800A08280 /* AppDelegate.swift */; };
 		9C8FB2351CA9552800A08280 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C8FB2341CA9552800A08280 /* ViewController.swift */; };
@@ -63,7 +64,6 @@
 		9CE8F8C31CB8E4ED00E56457 /* libmswebrtc.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 9CE8F6601CB8E4EC00E56457 /* libmswebrtc.a */; };
 		9CE8F8C41CB8E4ED00E56457 /* libmsx264.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 9CE8F6611CB8E4EC00E56457 /* libmsx264.a */; };
 		9CE8FAF11CB8EAE200E56457 /* VoipService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CE8FAF01CB8EAE200E56457 /* VoipService.swift */; };
-		9CE8FAF31CB8EB2B00E56457 /* VoipConnectionStateChangedListener.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CE8FAF21CB8EB2B00E56457 /* VoipConnectionStateChangedListener.swift */; };
 		9CE8FAF61CB8ECEC00E56457 /* VoipServiceImpl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CE8FAF51CB8ECEC00E56457 /* VoipServiceImpl.swift */; };
 		9CF3D0581CB1307600ACBF47 /* VoipConnectionState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CF3D0571CB1307600ACBF47 /* VoipConnectionState.swift */; };
 		9CF3D05A1CB1582D00ACBF47 /* VolumeControl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CF3D0591CB1582D00ACBF47 /* VolumeControl.swift */; };
@@ -77,6 +77,7 @@
 		9C6F62381CBC56AF0011B22E /* ringback.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = ringback.wav; sourceTree = "<group>"; };
 		9C6F623A1CBC56AF0011B22E /* notes_of_the_optimistic.caf */ = {isa = PBXFileReference; lastKnownFileType = file; path = notes_of_the_optimistic.caf; sourceTree = "<group>"; };
 		9C6F623B1CBC56AF0011B22E /* shortring.caf */ = {isa = PBXFileReference; lastKnownFileType = file; path = shortring.caf; sourceTree = "<group>"; };
+		9C7D81771CC0D50100551E73 /* ApplicationServices.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ApplicationServices.swift; sourceTree = "<group>"; };
 		9C8C738E1CAB18FD00AAF540 /* iCarousel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = iCarousel.h; sourceTree = "<group>"; };
 		9C8C738F1CAB18FD00AAF540 /* iCarousel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = iCarousel.m; sourceTree = "<group>"; };
 		9C8C73911CAB198900AAF540 /* touroxair-Bridging-Header.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "touroxair-Bridging-Header.h"; sourceTree = "<group>"; };
@@ -534,7 +535,6 @@
 		9CE8F6601CB8E4EC00E56457 /* libmswebrtc.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libmswebrtc.a; sourceTree = "<group>"; };
 		9CE8F6611CB8E4EC00E56457 /* libmsx264.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libmsx264.a; sourceTree = "<group>"; };
 		9CE8FAF01CB8EAE200E56457 /* VoipService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VoipService.swift; sourceTree = "<group>"; };
-		9CE8FAF21CB8EB2B00E56457 /* VoipConnectionStateChangedListener.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VoipConnectionStateChangedListener.swift; sourceTree = "<group>"; };
 		9CE8FAF51CB8ECEC00E56457 /* VoipServiceImpl.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VoipServiceImpl.swift; sourceTree = "<group>"; };
 		9CF3D0571CB1307600ACBF47 /* VoipConnectionState.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VoipConnectionState.swift; sourceTree = "<group>"; };
 		9CF3D0591CB1582D00ACBF47 /* VolumeControl.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VolumeControl.swift; sourceTree = "<group>"; };
@@ -1404,7 +1404,7 @@
 			children = (
 				9CE8FAF41CB8ECD900E56457 /* impl */,
 				9CE8FAF01CB8EAE200E56457 /* VoipService.swift */,
-				9CE8FAF21CB8EB2B00E56457 /* VoipConnectionStateChangedListener.swift */,
+				9C7D81771CC0D50100551E73 /* ApplicationServices.swift */,
 			);
 			name = services;
 			sourceTree = "<group>";
@@ -1503,13 +1503,13 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				9C7D81781CC0D50100551E73 /* ApplicationServices.swift in Sources */,
 				9C8FB2351CA9552800A08280 /* ViewController.swift in Sources */,
 				9C8C73901CAB18FD00AAF540 /* iCarousel.m in Sources */,
 				9C8FB2451CA9754B00A08280 /* RadialGradientLayer.swift in Sources */,
 				9CE8FAF11CB8EAE200E56457 /* VoipService.swift in Sources */,
 				9CF3D0581CB1307600ACBF47 /* VoipConnectionState.swift in Sources */,
 				9CE8FAF61CB8ECEC00E56457 /* VoipServiceImpl.swift in Sources */,
-				9CE8FAF31CB8EB2B00E56457 /* VoipConnectionStateChangedListener.swift in Sources */,
 				9C8FB2331CA9552800A08280 /* AppDelegate.swift in Sources */,
 				9C9A7BA41CB5A6C500E79685 /* NetworkUtils.swift in Sources */,
 				9CF3D05A1CB1582D00ACBF47 /* VolumeControl.swift in Sources */,

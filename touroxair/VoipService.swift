@@ -12,13 +12,10 @@ import Foundation
 protocol VoipService {
     
     // Initialize the internal SIP library. This method must be called first!
-    func initialize()
+    func initialize(listener: (state: VoipConnectionState) -> Void)
     
     // Destroy the SIP library resources.
     func destroy()
-    
-    // Register the given listener.
-    func registerVoipConnectionStateChangedListener(listener: VoipConnectionStateChangedListener)
     
     // Open a connection with the VoIP router.
     func openConnection(username: String, password: String, hostname: String)
