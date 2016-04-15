@@ -50,12 +50,18 @@ class ViewController: UIViewController, iCarouselDataSource, iCarouselDelegate {
             let usernameSuffixIndex = wifiAddress!.rangeOfString(".", options: .BackwardsSearch)?.endIndex
             let username = "u" + wifiAddress!.substringFromIndex(usernameSuffixIndex!)
             let hostname = "192.168.85.1"
-            print("Computed configuration: username = " + username + ", hostname = " + hostname)
+            NSLog("Computed configuration: username = %@, hostname = %@", username, hostname)
             
             // Open the connection with the VoIP server
             voipService.initialize({(state: VoipConnectionState) -> Void in
-                //print("VoidService event: " + state)
+                dispatch_async(dispatch_get_main_queue()) {
+                    self.onVoipConnectionStateChanged(state)
+                }
             })
+            let time = dispatch_time(dispatch_time_t(DISPATCH_TIME_NOW), 1 * Int64(NSEC_PER_SEC)) // Wait 1 second before opening the connection
+            dispatch_after(time, dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0)) {
+                voipService.openConnection(username, password: "pass", hostname: hostname)
+            }
         }
     }
 
