@@ -32,7 +32,7 @@ class VoipServiceImpl: VoipService {
         // Prepare the LibLinphone configuration
         let resourceLinphonercPath = bundleFile("linphonerc")
         let linphonercPath = documentFile("linphonerc")
-        copyFile(resourceLinphonercPath!, dst: linphonercPath!, override: false)
+        copyFile(resourceLinphonercPath!, dst: linphonercPath!, override: true)
         
         let resourceLinphonercFactoryPath = bundleFile("linphonerc_factory")
         linphoneConfig = lp_config_new_with_factory(NSString(string: linphonercPath!).UTF8String, NSString(string: resourceLinphonercFactoryPath!).UTF8String)
@@ -49,6 +49,10 @@ class VoipServiceImpl: VoipService {
         let pointerToSelf = VoipServiceImpl.bridge(self)
         linphoneCore = linphone_core_new_with_config(&linphoneCoreVTable, linphoneConfig!, pointerToSelf)
         linphone_core_set_user_agent(linphoneCore!, NSString(string: "Tourox").UTF8String, NSString(string: "1.0").UTF8String)
+        
+        let dumpedConfig = lp_config_dump_as_xml(linphoneConfig!)
+        let test = NSString(UTF8String: dumpedConfig)
+        print(test)
         
         NSLog("VoIP service initialized with success!")
     }
@@ -70,7 +74,7 @@ class VoipServiceImpl: VoipService {
         
         self.hostname = hostname
         
-        let authInfo = linphone_auth_info_new(NSString(string: username).UTF8String, nil, NSString(string: password).UTF8String, nil, nil, nil)
+        let authInfo = linphone_auth_info_new(NSString(string: username).UTF8String, nil, NSString(string: password).UTF8String, nil, nil, NSString(string: hostname).UTF8String)
         linphone_core_add_auth_info(linphoneCore!, authInfo)
         
         let proxyConfig = linphone_core_create_proxy_config(linphoneCore!)
@@ -78,11 +82,12 @@ class VoipServiceImpl: VoipService {
         linphone_proxy_config_set_server_addr(proxyConfig, NSString(string: hostname).UTF8String)
         linphone_proxy_config_enable_register(proxyConfig, 1)
         linphone_core_add_proxy_config(linphoneCore!, proxyConfig)
-        linphone_core_set_default_proxy_config(linphoneCore!, proxyConfig)
         linphone_core_set_network_reachable(linphoneCore!, 1)
         
-        linphone_core_iterate(linphoneCore!);
-        timer = NSTimer.scheduledTimerWithTimeInterval(0.02, target: self, selector: #selector(linphoneCoreIterate), userInfo: nil, repeats: true)
+        linphoneCoreIterate()
+        timer = NSTimer.scheduledTimerWithTimeInterval(0.02, target: self, selector: #selector(VoipServiceImpl.linphoneCoreIterate), userInfo: nil, repeats: true)
+        
+        linphone_core_refresh_registers(linphoneCore!)
         
         /*dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), {
             NSLog("Start kick off network connection...")
@@ -202,7 +207,7 @@ class VoipServiceImpl: VoipService {
             let messageAsString = message == nil ? "" : NSString(UTF8String: message)!
             NSLog("registration_state_changed: state = \(state), message = \(messageAsString)")
             
-            if state == LinphoneRegistrationOk || state == LinphoneRegistrationProgress {
+            if state == LinphoneRegistrationOk {
                 let pointerToSelf = linphone_core_get_user_data(lc)
                 let mySelf : VoipServiceImpl = VoipServiceImpl.bridge(pointerToSelf)
                 
@@ -254,40 +259,52 @@ class VoipServiceImpl: VoipService {
     
     // Thanks to https://github.com/BelledonneCommunications/linphone-iphone/blob/master/Classes/LinphoneManager.m#L2089
     private func bundleFile(file: NSString) -> String? {
-        return NSBundle.mainBundle().pathForResource(file.stringByDeletingPathExtension, ofType: file.pathExtension)
+        let result = NSBundle.mainBundle().pathForResource(file.stringByDeletingPathExtension, ofType: file.pathExtension)
+        NSLog("bundleFile(\(file)) -> \(result)")
+        return result
     }
     
     // Thanks to https://github.com/BelledonneCommunications/linphone-iphone/blob/master/Classes/LinphoneManager.m#L2093
     private func documentFile(file: String) -> String? {
         let paths = NSSearchPathForDirectoriesInDomains(.DocumentDirectory, .UserDomainMask, true)
         let documentsPath = paths.first!
-        return NSString(string: documentsPath).stringByAppendingPathComponent(file)
+        let result = NSString(string: documentsPath).stringByAppendingPathComponent(file)
+        NSLog("documentFile(\(file)) -> \(result)")
+        return result
     }
     
     // Thanks to https://github.com/BelledonneCommunications/linphone-iphone/blob/master/Classes/LinphoneManager.m#L2129
     private func copyFile(src: String, dst: String, override: Bool) -> Bool {
+        NSLog("copyFile(src: \(src), dst: \(dst), override: \(override))")
         let fileManager = NSFileManager.defaultManager()
         
         if !fileManager.fileExistsAtPath(src) {
+            NSLog("Error: the file '\(src)' doesnt exist.")
             return false
         }
         if fileManager.fileExistsAtPath(dst) {
+            NSLog("The destination file '\(dst)' already exist.")
             if override {
                 do {
                     try fileManager.removeItemAtPath(dst)
+                    NSLog("Existing destination file '\(dst)' deleted.")
                 } catch {
+                    NSLog("Error: the destination file '\(dst)' cannot be deleted.")
                     return false
                 }
             }
             else {
+                NSLog("The destination file '\(dst)' already exist and is left untouched.")
                 return false
             }
         }
         do {
             try fileManager.copyItemAtPath(src, toPath: dst)
         } catch {
+            NSLog("Error: the file '\(src)' cannot be copied to \(dst).")
             return false
         }
+        NSLog("The file '\(src)' has been successfully copied to \(dst).")
         return true
     }
     

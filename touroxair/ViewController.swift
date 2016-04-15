@@ -59,7 +59,7 @@ class ViewController: UIViewController, iCarouselDataSource, iCarouselDelegate {
                 }
             })
             let time = dispatch_time(dispatch_time_t(DISPATCH_TIME_NOW), 1 * Int64(NSEC_PER_SEC)) // Wait 1 second before opening the connection
-            dispatch_after(time, dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0)) {
+            dispatch_after(time, dispatch_get_main_queue()) {
                 voipService.openConnection(username, password: "pass", hostname: hostname)
             }
         }
