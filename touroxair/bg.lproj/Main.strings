@@ -1,0 +1,18 @@
+
+/* Class = "UILabel"; text = "..."; ObjectID = "QCO-bJ-exi"; */
+"QCO-bJ-exi.text" = "...";
+
+/* Class = "UIImageView"; accessibilityLabel = "Tourox"; ObjectID = "QlU-Y8-kJn"; */
+"QlU-Y8-kJn.accessibilityLabel" = "Tourox";
+
+/* Class = "UILabel"; text = "Listen to your guide comfortably!"; ObjectID = "RhK-n7-Cqd"; */
+"RhK-n7-Cqd.text" = "Можете да чуете вашия екскурзовод";
+
+/* Class = "UIImageView"; accessibilityLabel = "Volume up"; ObjectID = "a1A-xx-eYO"; */
+"a1A-xx-eYO.accessibilityLabel" = "Увеличаване на звука";
+
+/* Class = "UIImageView"; accessibilityLabel = "Volume down"; ObjectID = "iVe-7G-cHk"; */
+"iVe-7G-cHk.accessibilityLabel" = "Намаляване на звука";
+
+/* Class = "UIView"; accessibilityLabel = "Application step"; ObjectID = "odo-4L-IYh"; */
+"odo-4L-IYh.accessibilityLabel" = "Автоматични настройки";

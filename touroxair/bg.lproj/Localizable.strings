@@ -1,0 +1,20 @@
+/* 
+  Localizable.Strings
+  touroxair
+
+  Created by Marc Plouhinec on 16/04/16.
+  Copyright © 2016 Marc Plouhinec. All rights reserved.
+*/
+step1_description="Свързване с рутера…";
+step1_error_description="Грешка: неуспешно свързване с гласовия рутер";
+step2_description="Вие се свързахте с екскурзовода";
+
+no_wifi_connection_error_title="Няма WiFi връзка";
+no_wifi_connection_error_message="Моля, свържете се с рутера на екскурзовода и рестартирайте приложението.";
+wrong_wifi_connection_error_title="Свързани сте с друга WiFi мрежа";
+wrong_wifi_connection_error_message="Моля, свържете се с безжична мрежа, която започва с думата \'tourox\' и рестартирайте приложението.";
+unable_to_load_voip_service_error_title="Системна грешка";
+unable_to_load_voip_service_error_message="Неуспешно зареждане на VoIP услуга! Опитайте да рестартирате приложението, но ако това не помогне, вероятно телефонът ви не е съвместим.";
+unable_to_open_connection_to_voip_service_error_title="Грешка при свързване";
+unable_to_open_connection_to_voip_service_error_message="Неуспешно установяване на връзка с гласовата услуга. Моля, рестартирайте приложението, за да започнете отначало.";
+restart_button="Рестартирам";
