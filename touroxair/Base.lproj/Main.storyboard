@@ -20,6 +20,9 @@
                         <subviews>
                             <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" placeholderIntrinsicWidth="225" placeholderIntrinsicHeight="42" image="TouroxLogo" translatesAutoresizingMaskIntoConstraints="NO" id="QlU-Y8-kJn">
                                 <rect key="frame" x="20" y="50" width="560" height="42"/>
+                                <accessibility key="accessibilityConfiguration" label="Tourox">
+                                    <bool key="isElement" value="YES"/>
+                                </accessibility>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="42" id="iTk-09-Xhg"/>
                                 </constraints>
@@ -33,6 +36,9 @@
                             <view userInteractionEnabled="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="odo-4L-IYh" customClass="iCarousel">
                                 <rect key="frame" x="20" y="153" width="560" height="180"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                <accessibility key="accessibilityConfiguration" label="Application step">
+                                    <bool key="isElement" value="YES"/>
+                                </accessibility>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="180" id="Syc-8l-ivK"/>
                                 </constraints>
@@ -41,7 +47,7 @@
                                     <outlet property="delegate" destination="BYZ-38-t0r" id="J95-5I-Rha"/>
                                 </connections>
                             </view>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Connecting to the router…" textAlignment="center" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" preferredMaxLayoutWidth="0.0" translatesAutoresizingMaskIntoConstraints="NO" id="QCO-bJ-exi">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="..." textAlignment="center" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" preferredMaxLayoutWidth="0.0" translatesAutoresizingMaskIntoConstraints="NO" id="QCO-bJ-exi">
                                 <rect key="frame" x="20" y="341" width="560" height="21"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -49,6 +55,9 @@
                             </label>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="ic_volume_up_white_36pt" translatesAutoresizingMaskIntoConstraints="NO" id="a1A-xx-eYO">
                                 <rect key="frame" x="424" y="556" width="36" height="36"/>
+                                <accessibility key="accessibilityConfiguration" label="Volume up">
+                                    <bool key="isElement" value="YES"/>
+                                </accessibility>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="36" id="78X-3Z-buX"/>
                                     <constraint firstAttribute="width" constant="36" id="g6J-uL-ofO"/>
@@ -56,6 +65,9 @@
                             </imageView>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="ic_volume_mute_white_36pt" translatesAutoresizingMaskIntoConstraints="NO" id="iVe-7G-cHk">
                                 <rect key="frame" x="140" y="556" width="36" height="36"/>
+                                <accessibility key="accessibilityConfiguration" label="Volume down">
+                                    <bool key="isElement" value="YES"/>
+                                </accessibility>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="36" id="vop-rI-dsI"/>
                                     <constraint firstAttribute="width" constant="36" id="wW0-q1-a3h"/>

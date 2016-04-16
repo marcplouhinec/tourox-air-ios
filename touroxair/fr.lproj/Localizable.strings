@@ -1,0 +1,20 @@
+/* 
+  Localizable.Strings
+  touroxair
+
+  Created by Marc Plouhinec on 16/04/16.
+  Copyright © 2016 Marc Plouhinec. All rights reserved.
+*/
+step1_description="Connexion au routeur…";
+step1_error_description="Erreur: impossible de se connecter au routeur VoIP!";
+step2_description="Communication en cours";
+
+no_wifi_connection_error_title="Aucune connection WIFI détectée!";
+no_wifi_connection_error_message="Veuillez vous connecter au routeur WIFI du guide et redémarrer l\'application.";
+wrong_wifi_connection_error_title="Mauvaise connexion WIFI détectée!";
+wrong_wifi_connection_error_message="Veuillez vous connecter à un réseau WIFI commencant par le mot \'tourox\' et redémarrer l\'application.";
+unable_to_load_voip_service_error_title="Erreur interne";
+unable_to_load_voip_service_error_message="Impossible de charger le service VoIP! Vous pouvez essayer de redémarrer l\'application, mais si cela ne fonctionne toujours pas cela signifie que votre appareil est incompatible.";
+unable_to_open_connection_to_voip_service_error_title="Erreur de connexion";
+unable_to_open_connection_to_voip_service_error_message="Impossible d\'ouvrir une connexion avec le service VoIP. Veuillez redémarrer l\'application pour essayer encore une fois.";
+restart_button="Redémarrer";

@@ -10,6 +10,7 @@
 		9C6EE67E1CC24E9600B76F5C /* VoipServicePjsip.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C6EE67D1CC24E9600B76F5C /* VoipServicePjsip.swift */; };
 		9C6EE6801CC2585600B76F5C /* VoipServiceError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C6EE67F1CC2585600B76F5C /* VoipServiceError.swift */; };
 		9C7D81781CC0D50100551E73 /* ApplicationServices.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C7D81771CC0D50100551E73 /* ApplicationServices.swift */; };
+		9C8ED2481CC2D18600C5C687 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 9C8ED24A1CC2D18600C5C687 /* Localizable.strings */; };
 		9C8FB2331CA9552800A08280 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C8FB2321CA9552800A08280 /* AppDelegate.swift */; };
 		9C8FB2351CA9552800A08280 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C8FB2341CA9552800A08280 /* ViewController.swift */; };
 		9C8FB2381CA9552800A08280 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9C8FB2361CA9552800A08280 /* Main.storyboard */; };
@@ -26,10 +27,14 @@
 /* Begin PBXFileReference section */
 		577665B5EAB53C23F4852330 /* Pods-touroxair.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-touroxair.release.xcconfig"; path = "Pods/Target Support Files/Pods-touroxair/Pods-touroxair.release.xcconfig"; sourceTree = "<group>"; };
 		92F6A7A2A01CFBF21D175936 /* Pods_touroxair.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_touroxair.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		9C36CCD71CC2D7A00029F7D2 /* fr */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = fr; path = fr.lproj/Main.strings; sourceTree = "<group>"; };
 		9C6EE67D1CC24E9600B76F5C /* VoipServicePjsip.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VoipServicePjsip.swift; sourceTree = "<group>"; };
 		9C6EE67F1CC2585600B76F5C /* VoipServiceError.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VoipServiceError.swift; sourceTree = "<group>"; };
 		9C7D81771CC0D50100551E73 /* ApplicationServices.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ApplicationServices.swift; sourceTree = "<group>"; };
 		9C8C73911CAB198900AAF540 /* touroxair-Bridging-Header.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "touroxair-Bridging-Header.h"; sourceTree = "<group>"; };
+		9C8ED2451CC2D03600C5C687 /* fr */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = fr; path = fr.lproj/LaunchScreen.strings; sourceTree = "<group>"; };
+		9C8ED2491CC2D18600C5C687 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
+		9C8ED24B1CC2D1CC00C5C687 /* fr */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = fr; path = fr.lproj/Localizable.strings; sourceTree = "<group>"; };
 		9C8FB22F1CA9552800A08280 /* touroxair.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = touroxair.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		9C8FB2321CA9552800A08280 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		9C8FB2341CA9552800A08280 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -107,6 +112,7 @@
 				9C8FB2441CA9754B00A08280 /* RadialGradientLayer.swift */,
 				9C8C73911CAB198900AAF540 /* touroxair-Bridging-Header.h */,
 				9CF3D0591CB1582D00ACBF47 /* VolumeControl.swift */,
+				9C8ED24A1CC2D18600C5C687 /* Localizable.strings */,
 			);
 			path = touroxair;
 			sourceTree = "<group>";
@@ -191,6 +197,7 @@
 			knownRegions = (
 				en,
 				Base,
+				fr,
 			);
 			mainGroup = 9C8FB2261CA9552800A08280;
 			productRefGroup = 9C8FB2301CA9552800A08280 /* Products */;
@@ -208,6 +215,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				9C8FB23D1CA9552800A08280 /* LaunchScreen.storyboard in Resources */,
+				9C8ED2481CC2D18600C5C687 /* Localizable.strings in Resources */,
 				9C8FB23A1CA9552800A08280 /* Assets.xcassets in Resources */,
 				9C8FB2381CA9552800A08280 /* Main.storyboard in Resources */,
 			);
@@ -284,10 +292,20 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXVariantGroup section */
+		9C8ED24A1CC2D18600C5C687 /* Localizable.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				9C8ED2491CC2D18600C5C687 /* en */,
+				9C8ED24B1CC2D1CC00C5C687 /* fr */,
+			);
+			name = Localizable.strings;
+			sourceTree = "<group>";
+		};
 		9C8FB2361CA9552800A08280 /* Main.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (
 				9C8FB2371CA9552800A08280 /* Base */,
+				9C36CCD71CC2D7A00029F7D2 /* fr */,
 			);
 			name = Main.storyboard;
 			sourceTree = "<group>";
@@ -296,6 +314,7 @@
 			isa = PBXVariantGroup;
 			children = (
 				9C8FB23C1CA9552800A08280 /* Base */,
+				9C8ED2451CC2D03600C5C687 /* fr */,
 			);
 			name = LaunchScreen.storyboard;
 			sourceTree = "<group>";

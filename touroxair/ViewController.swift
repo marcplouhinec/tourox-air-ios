@@ -81,11 +81,11 @@ class ViewController: UIViewController, iCarouselDataSource, iCarouselDelegate {
         // Get the current IP address of the WIFI connection and check it is correct
         let wifiAddress = NetworkUtils.getWiFiAddress();
         if wifiAddress == nil {
-            showUnrecoverableErrorDialog("No WIFI connection detected!", message: "Please connect to the guide\'s WIFI router and restart the application.")
+            showUnrecoverableErrorDialog(NSLocalizedString("no_wifi_connection_error_title", comment: "No WIFI connection detected!"), message: NSLocalizedString("no_wifi_connection_error_message", comment: "Please connect to the guide\'s WIFI router and restart the application."))
             return;
         }
         if !wifiAddress!.hasPrefix("192.168.85.") {
-            showUnrecoverableErrorDialog("Wrong WIFI connection detected!", message: "Please connect to a WIFI network starting with the word \'tourox\' and restart the application.")
+            showUnrecoverableErrorDialog(NSLocalizedString("wrong_wifi_connection_error_title", comment: "Wrong WIFI connection detected!"), message: NSLocalizedString("wrong_wifi_connection_error_message", comment: "Please connect to a WIFI network starting with the word \'tourox\' and restart the application."))
             return;
         }
         
@@ -111,17 +111,17 @@ class ViewController: UIViewController, iCarouselDataSource, iCarouselDelegate {
                     }
                     catch VoipServiceError.ConnectionError(let message) {
                         NSLog("VoIP service connection error: \(message)")
-                        self.showUnrecoverableErrorDialog("Connection error", message: "Unable to open a connection to the VoIP service. Please restart the application to try again.")
+                        self.showUnrecoverableErrorDialog(NSLocalizedString("unable_to_open_connection_to_voip_service_error_title", comment: "Connection error"), message: NSLocalizedString("unable_to_open_connection_to_voip_service_error_message", comment: "Unable to open a connection to the VoIP service. Please restart the application to try again."))
                     }
                     catch {
-                        self.showUnrecoverableErrorDialog("Connection error", message: "Unable to open a connection to the VoIP service. Please restart the application to try again.")
+                        self.showUnrecoverableErrorDialog(NSLocalizedString("unable_to_open_connection_to_voip_service_error_title", comment: "Connection error"), message: NSLocalizedString("unable_to_open_connection_to_voip_service_error_message", comment: "Unable to open a connection to the VoIP service. Please restart the application to try again."))
                     }
                 }
             } catch VoipServiceError.InitializationError(let message) {
                 NSLog("VoIP service initialization error: \(message)")
-                showUnrecoverableErrorDialog("Internal error", message: "Unable to load the VoIP service! You may try to restart the application, but if it still doesn\'t work it means your device is incompatible.")
+                showUnrecoverableErrorDialog(NSLocalizedString("unable_to_load_voip_service_error_title", comment: "Internal error"), message: NSLocalizedString("unable_to_load_voip_service_error_message", comment: "Unable to load the VoIP service! You may try to restart the application, but if it still doesn\'t work it means your device is incompatible."))
             } catch {
-                showUnrecoverableErrorDialog("Internal error", message: "Unable to load the VoIP service! You may try to restart the application, but if it still doesn\'t work it means your device is incompatible.")
+                showUnrecoverableErrorDialog(NSLocalizedString("unable_to_load_voip_service_error_title", comment: "Internal error"), message: NSLocalizedString("unable_to_load_voip_service_error_message", comment: "Unable to load the VoIP service! You may try to restart the application, but if it still doesn\'t work it means your device is incompatible."))
             }
         }
         
@@ -162,7 +162,7 @@ class ViewController: UIViewController, iCarouselDataSource, iCarouselDelegate {
         let alert = UIAlertView()
         alert.title = title
         alert.message = message
-        alert.addButtonWithTitle("Restart")
+        alert.addButtonWithTitle(NSLocalizedString("restart_button", comment: "Restart"))
         alert.delegate = errorDialogDelegate
         alert.show()
     }
@@ -201,13 +201,13 @@ class ViewController: UIViewController, iCarouselDataSource, iCarouselDelegate {
         switch state {
         case .NOT_CONNECTED:
             carousel.scrollToItemAtIndex(0, animated: true)
-            stepDescriptionLabel.text = "Connecting to the router…"
+            stepDescriptionLabel.text = NSLocalizedString("step1_description", comment: "Connecting to the router…")
         case .UNABLE_TO_CONNECT:
             carousel.scrollToItemAtIndex(0, animated: true)
-            stepDescriptionLabel.text = "Error: unable to connect with the router VoIP!"
+            stepDescriptionLabel.text = NSLocalizedString("step1_error_description", comment: "Error: unable to connect with the router VoIP!")
         case .ONGOING_CALL:
             carousel.scrollToItemAtIndex(1, animated: true)
-            stepDescriptionLabel.text = "Communication ongoing"
+            stepDescriptionLabel.text = NSLocalizedString("step2_description", comment: "Communication ongoing")
         }
     }
 }
