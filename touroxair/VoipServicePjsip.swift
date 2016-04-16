@@ -6,6 +6,8 @@
 //  Copyright © 2016 Marc Plouhinec. All rights reserved.
 //
 
+import Foundation
+
 // Implementation of VoipService by using PJSIP (http://www.pjsip.org)
 // Thanks to http://www.pjsip.org/pjsip/docs/html/page_pjsip_sample_simple_pjsuaua_c.htm
 class VoipServicePjsip: VoipService {

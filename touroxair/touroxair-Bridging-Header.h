@@ -6,6 +6,5 @@
 //  Copyright © 2016 Marc Plouhinec. All rights reserved.
 //
 
-#import "iCarousel.h"
 #include <ifaddrs.h>
 #import <pjsua.h>

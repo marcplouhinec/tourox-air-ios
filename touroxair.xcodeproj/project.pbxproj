@@ -10,7 +10,6 @@
 		9C6EE67E1CC24E9600B76F5C /* VoipServicePjsip.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C6EE67D1CC24E9600B76F5C /* VoipServicePjsip.swift */; };
 		9C6EE6801CC2585600B76F5C /* VoipServiceError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C6EE67F1CC2585600B76F5C /* VoipServiceError.swift */; };
 		9C7D81781CC0D50100551E73 /* ApplicationServices.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C7D81771CC0D50100551E73 /* ApplicationServices.swift */; };
-		9C8C73901CAB18FD00AAF540 /* iCarousel.m in Sources */ = {isa = PBXBuildFile; fileRef = 9C8C738F1CAB18FD00AAF540 /* iCarousel.m */; };
 		9C8FB2331CA9552800A08280 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C8FB2321CA9552800A08280 /* AppDelegate.swift */; };
 		9C8FB2351CA9552800A08280 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C8FB2341CA9552800A08280 /* ViewController.swift */; };
 		9C8FB2381CA9552800A08280 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9C8FB2361CA9552800A08280 /* Main.storyboard */; };
@@ -31,8 +30,6 @@
 		9C6EE67D1CC24E9600B76F5C /* VoipServicePjsip.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VoipServicePjsip.swift; sourceTree = "<group>"; };
 		9C6EE67F1CC2585600B76F5C /* VoipServiceError.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VoipServiceError.swift; sourceTree = "<group>"; };
 		9C7D81771CC0D50100551E73 /* ApplicationServices.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ApplicationServices.swift; sourceTree = "<group>"; };
-		9C8C738E1CAB18FD00AAF540 /* iCarousel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = iCarousel.h; sourceTree = "<group>"; };
-		9C8C738F1CAB18FD00AAF540 /* iCarousel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = iCarousel.m; sourceTree = "<group>"; };
 		9C8C73911CAB198900AAF540 /* touroxair-Bridging-Header.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "touroxair-Bridging-Header.h"; sourceTree = "<group>"; };
 		9C8FB22F1CA9552800A08280 /* touroxair.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = touroxair.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		9C8FB2321CA9552800A08280 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -79,19 +76,9 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
-		9C8C738D1CAB18FD00AAF540 /* iCarousel */ = {
-			isa = PBXGroup;
-			children = (
-				9C8C738E1CAB18FD00AAF540 /* iCarousel.h */,
-				9C8C738F1CAB18FD00AAF540 /* iCarousel.m */,
-			);
-			path = iCarousel;
-			sourceTree = "<group>";
-		};
 		9C8FB2261CA9552800A08280 = {
 			isa = PBXGroup;
 			children = (
-				9C8C738D1CAB18FD00AAF540 /* iCarousel */,
 				9C8FB2311CA9552800A08280 /* touroxair */,
 				9C8FB2301CA9552800A08280 /* Products */,
 				6D11B3BAE396EC29F3043195 /* Pods */,
@@ -286,7 +273,6 @@
 			files = (
 				9C7D81781CC0D50100551E73 /* ApplicationServices.swift in Sources */,
 				9C8FB2351CA9552800A08280 /* ViewController.swift in Sources */,
-				9C8C73901CAB18FD00AAF540 /* iCarousel.m in Sources */,
 				9C8FB2451CA9754B00A08280 /* RadialGradientLayer.swift in Sources */,
 				9CE8FAF11CB8EAE200E56457 /* VoipService.swift in Sources */,
 				9CF3D0581CB1307600ACBF47 /* VoipConnectionState.swift in Sources */,

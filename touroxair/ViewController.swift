@@ -9,6 +9,7 @@
 import UIKit
 import AVFoundation
 import MediaPlayer
+import iCarousel
 
 class ViewController: UIViewController, iCarouselDataSource, iCarouselDelegate {
     
