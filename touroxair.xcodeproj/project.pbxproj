@@ -29,6 +29,9 @@
 		92F6A7A2A01CFBF21D175936 /* Pods_touroxair.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_touroxair.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		9C36CCD71CC2D7A00029F7D2 /* fr */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = fr; path = fr.lproj/Main.strings; sourceTree = "<group>"; };
 		9C36CCD81CC2DBA00029F7D2 /* Base */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = Base; path = Base.lproj/Localizable.strings; sourceTree = "<group>"; };
+		9C449E551CC2DCCC00B0FFE1 /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/Main.strings"; sourceTree = "<group>"; };
+		9C449E561CC2DCCC00B0FFE1 /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/LaunchScreen.strings"; sourceTree = "<group>"; };
+		9C449E571CC2DCCC00B0FFE1 /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/Localizable.strings"; sourceTree = "<group>"; };
 		9C6EE67D1CC24E9600B76F5C /* VoipServicePjsip.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VoipServicePjsip.swift; sourceTree = "<group>"; };
 		9C6EE67F1CC2585600B76F5C /* VoipServiceError.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VoipServiceError.swift; sourceTree = "<group>"; };
 		9C7D81771CC0D50100551E73 /* ApplicationServices.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ApplicationServices.swift; sourceTree = "<group>"; };
@@ -198,6 +201,7 @@
 				en,
 				Base,
 				fr,
+				"zh-Hans",
 			);
 			mainGroup = 9C8FB2261CA9552800A08280;
 			productRefGroup = 9C8FB2301CA9552800A08280 /* Products */;
@@ -297,6 +301,7 @@
 			children = (
 				9C8ED24B1CC2D1CC00C5C687 /* fr */,
 				9C36CCD81CC2DBA00029F7D2 /* Base */,
+				9C449E571CC2DCCC00B0FFE1 /* zh-Hans */,
 			);
 			name = Localizable.strings;
 			sourceTree = "<group>";
@@ -306,6 +311,7 @@
 			children = (
 				9C8FB2371CA9552800A08280 /* Base */,
 				9C36CCD71CC2D7A00029F7D2 /* fr */,
+				9C449E551CC2DCCC00B0FFE1 /* zh-Hans */,
 			);
 			name = Main.storyboard;
 			sourceTree = "<group>";
@@ -315,6 +321,7 @@
 			children = (
 				9C8FB23C1CA9552800A08280 /* Base */,
 				9C8ED2451CC2D03600C5C687 /* fr */,
+				9C449E561CC2DCCC00B0FFE1 /* zh-Hans */,
 			);
 			name = LaunchScreen.storyboard;
 			sourceTree = "<group>";

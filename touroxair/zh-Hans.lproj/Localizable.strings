@@ -1,0 +1,20 @@
+/* 
+  Localizable.Strings
+  touroxair
+
+  Created by Marc Plouhinec on 16/04/16.
+  Copyright © 2016 Marc Plouhinec. All rights reserved.
+*/
+step1_description="正在连接…";
+step1_error_description="故障: 无法连接网络电话！";
+step2_description="正在通话";
+
+no_wifi_connection_error_title="没有检测到任何无线网络链接！";
+no_wifi_connection_error_message="请连接导游的无线路由器,然后重新启动该程序。";
+wrong_wifi_connection_error_title="连接错误无线网络！";
+wrong_wifi_connection_error_message="请连接\'tourox\'的无线网络,然后重新启动该应用程序。";
+unable_to_load_voip_service_error_title="内部故障";
+unable_to_load_voip_service_error_message="无法下载通话程序!请重新启动该应用程序,如果仍然不能运作说明您的设备与该软件并不兼容。";
+unable_to_open_connection_to_voip_service_error_title="连接错误";
+unable_to_open_connection_to_voip_service_error_message="无法连接通话,请重新启动。";
+restart_button="重新开始";
