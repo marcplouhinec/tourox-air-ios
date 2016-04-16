@@ -426,6 +426,7 @@
 			baseConfigurationReference = EE7D394234D1FF041F1EDE3F /* Pods-touroxair.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				ENABLE_BITCODE = NO;
 				INFOPLIST_FILE = touroxair/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
@@ -443,6 +444,7 @@
 			baseConfigurationReference = 577665B5EAB53C23F4852330 /* Pods-touroxair.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				ENABLE_BITCODE = NO;
 				INFOPLIST_FILE = touroxair/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
