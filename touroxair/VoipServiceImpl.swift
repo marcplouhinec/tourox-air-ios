@@ -14,18 +14,19 @@ import Foundation
 // Thanks to http://www.sitepoint.com/using-legacy-c-apis-swift/
 class VoipServiceImpl: VoipService {
     
-    var linphoneCoreVTable = VoipServiceImpl.initializeLinphoneCoreVTable()
     var currentVoipConnectionState = VoipConnectionState.NOT_CONNECTED
+    
+    /*var linphoneCoreVTable = VoipServiceImpl.initializeLinphoneCoreVTable()
     var linphoneConfig: COpaquePointer?
     var linphoneCore: COpaquePointer?
     var hostname: String?
     var isInConference = false
     var timer: NSTimer? = nil
-    var listener: (state: VoipConnectionState) -> Void = {(state: VoipConnectionState) -> Void in}
+    var listener: (state: VoipConnectionState) -> Void = {(state: VoipConnectionState) -> Void in}*/
  
     // Thanks to https://github.com/BelledonneCommunications/linphone-iphone/blob/master/Classes/LinphoneManager.m#L1475
-    func initialize(listener: (state: VoipConnectionState) -> Void) {
-        NSLog("Initialize the VoIP service...")
+    func initialize(listener: (state: VoipConnectionState) -> Void) throws {
+        /*NSLog("Initialize the VoIP service...")
         
         self.listener = listener
 
@@ -54,11 +55,11 @@ class VoipServiceImpl: VoipService {
         let test = NSString(UTF8String: dumpedConfig)
         print(test)
         
-        NSLog("VoIP service initialized with success!")
+        NSLog("VoIP service initialized with success!")*/
     }
     
     func destroy() {
-        NSLog("Destroy the VoIP service...")
+        /*NSLog("Destroy the VoIP service...")
         
         if let currentLinphoneCore = linphoneCore {
             linphone_core_destroy(currentLinphoneCore)
@@ -66,11 +67,11 @@ class VoipServiceImpl: VoipService {
         }
         else {
             NSLog("Nothing to destroy.")
-        }
+        }*/
     }
     
-    func openConnection(username: String, password: String, hostname: String) {
-        NSLog("Open a connection to '%@' with the user '%@' and password '%@'...", hostname, username, password)
+    func openConnection(username: String, password: String, hostname: String) throws {
+        /*NSLog("Open a connection to '%@' with the user '%@' and password '%@'...", hostname, username, password)
         
         self.hostname = hostname
         
@@ -133,15 +134,15 @@ class VoipServiceImpl: VoipService {
             NSLog("End kick off network connection.")
         })*/
         
-        NSLog("Connection opened with success!")
+        NSLog("Connection opened with success!")*/
     }
     
-    @objc private func linphoneCoreIterate() {
+    /*@objc private func linphoneCoreIterate() {
         linphone_core_iterate(linphoneCore!);
-    }
+    }*/
     
     func closeConnection() {
-        NSLog("Close the connection...")
+        /*NSLog("Close the connection...")
         
         isInConference = false;
         
@@ -168,7 +169,7 @@ class VoipServiceImpl: VoipService {
             NSLog("No connection to close.")
         }
         
-        notifyVoipConnectionStateChange(.NOT_CONNECTED)
+        notifyVoipConnectionStateChange(.NOT_CONNECTED)*/
     }
     
     // MARK: Events and states
@@ -176,7 +177,7 @@ class VoipServiceImpl: VoipService {
     func getVoipConnectionState() -> VoipConnectionState {
         return currentVoipConnectionState
     }
-    
+    /*
     private func notifyVoipConnectionStateChange(state: VoipConnectionState) {
         if currentVoipConnectionState == state {
             return
@@ -323,5 +324,5 @@ class VoipServiceImpl: VoipService {
     // Thanks to http://stackoverflow.com/a/33310021
     private static func bridge<T : AnyObject>(ptr : UnsafeMutablePointer<Void>) -> T {
         return Unmanaged<T>.fromOpaque(COpaquePointer(ptr)).takeUnretainedValue()
-    }
+    }*/
 }

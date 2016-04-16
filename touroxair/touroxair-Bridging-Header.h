@@ -8,4 +8,4 @@
 
 #import "iCarousel.h"
 #include <ifaddrs.h>
-#include "linphone/linphonecore.h"
+#import <pjsua.h>

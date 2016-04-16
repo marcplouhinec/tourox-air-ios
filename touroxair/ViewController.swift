@@ -53,14 +53,30 @@ class ViewController: UIViewController, iCarouselDataSource, iCarouselDelegate {
             NSLog("Computed configuration: username = %@, hostname = %@", username, hostname)
             
             // Open the connection with the VoIP server
-            voipService.initialize({(state: VoipConnectionState) -> Void in
-                dispatch_async(dispatch_get_main_queue()) {
-                    self.onVoipConnectionStateChanged(state)
+            do {
+                try voipService.initialize({(state: VoipConnectionState) -> Void in
+                    dispatch_async(dispatch_get_main_queue()) {
+                        self.onVoipConnectionStateChanged(state)
+                    }
+                })
+                let time = dispatch_time(dispatch_time_t(DISPATCH_TIME_NOW), 1 * Int64(NSEC_PER_SEC)) // Wait 1 second before opening the connection
+                dispatch_after(time, dispatch_get_main_queue()) {
+                    do {
+                        try voipService.openConnection(username, password: "pass", hostname: hostname)
+                    }
+                    catch VoipServiceError.ConnectionError(let message) {
+                        NSLog("VoIP service connection error: \(message)")
+                        self.showUnrecoverableErrorDialog("Connection error", message: "Unable to open a connection to the VoIP service. Please restart the application to try again.")
+                    }
+                    catch {
+                        self.showUnrecoverableErrorDialog("Connection error", message: "Unable to open a connection to the VoIP service. Please restart the application to try again.")
+                    }
                 }
-            })
-            let time = dispatch_time(dispatch_time_t(DISPATCH_TIME_NOW), 1 * Int64(NSEC_PER_SEC)) // Wait 1 second before opening the connection
-            dispatch_after(time, dispatch_get_main_queue()) {
-                voipService.openConnection(username, password: "pass", hostname: hostname)
+            } catch VoipServiceError.InitializationError(let message) {
+                NSLog("VoIP service initialization error: \(message)")
+                showUnrecoverableErrorDialog("Internal error", message: "Unable to load the VoIP service! You may try to restart the application, but if it still doesn\'t work it means your device is incompatible.")
+            } catch {
+                showUnrecoverableErrorDialog("Internal error", message: "Unable to load the VoIP service! You may try to restart the application, but if it still doesn\'t work it means your device is incompatible.")
             }
         }
     }
