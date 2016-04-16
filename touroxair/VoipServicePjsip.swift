@@ -42,9 +42,6 @@ class VoipServicePjsip: VoipService {
         
         var config = pjsua_config()
         pjsua_config_default(&config)
-        config.cb.on_call_state = {(call_id, e) -> Void in
-            NSLog("on_call_state: call_id = \(call_id), e = \(e)")
-        }
         config.cb.on_call_media_state = {(call_id) -> Void in
             NSLog("on_call_media_state: call_id = \(call_id)")
             
