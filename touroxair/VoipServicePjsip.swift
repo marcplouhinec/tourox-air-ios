@@ -12,8 +12,27 @@ import Foundation
 // Thanks to http://www.pjsip.org/pjsip/docs/html/page_pjsip_sample_simple_pjsuaua_c.htm
 class VoipServicePjsip: VoipService {
     
+    static let instance = VoipServicePjsip()
+    
+    var pjsuaActive = false
+    var isInConference = false
+    var isDestroying = false
+    var currentVoipConnectionState = VoipConnectionState.NOT_CONNECTED
+    var listener: (state: VoipConnectionState) -> Void = {(state: VoipConnectionState) -> Void in}
+    
+    private init() {
+    }
+    
     func initialize(listener: (state: VoipConnectionState) -> Void) throws {
         NSLog("Initialize the VoIP service...")
+        
+        self.listener = listener
+        
+        if pjsuaActive {
+            NSLog("Internal API PJSUA already active, destroy it first...")
+            closeConnection()
+            destroy()
+        }
         
         var status = pjsua_create()
         guard status == Int32(PJ_SUCCESS.rawValue) else {
@@ -34,6 +53,8 @@ class VoipServicePjsip: VoipService {
                 // Thanks to http://www.xianwenchen.com/blog/2014/07/15/how-to-make-an-ios-voip-app-with-pjsip-part-5/
                 pjsua_conf_connect(callInfo.conf_slot, 0)
                 pjsua_conf_connect(0, callInfo.conf_slot)
+                
+                VoipServicePjsip.instance.onCallOnGoing()
             }
         }
         config.cb.on_reg_state2 = {(acc_id, info) -> Void in
@@ -41,19 +62,13 @@ class VoipServicePjsip: VoipService {
             NSLog("on_reg_state: acc_id = \(acc_id), status = \(status)")
             
             if status == Int32(PJ_SUCCESS.rawValue) {
-                var uri = pj_str(UnsafeMutablePointer<Int8>(NSString(string: "sip:2@192.168.85.1").UTF8String))
-                var callSetting = pjsua_call_setting()
-                pjsua_call_setting_default(&callSetting)
-                let status2 = pjsua_call_make_call(acc_id, &uri, &callSetting, nil, nil, nil)
-                if status2 != Int32(PJ_SUCCESS.rawValue) {
-                    NSLog("Unable to call sip:2@192.168.85.1.")
-                }
+                VoipServicePjsip.instance.onRegistrationSuccess(acc_id)
             }
         }
         
         var loggingConfig = pjsua_logging_config()
         pjsua_logging_config_default(&loggingConfig)
-        loggingConfig.console_level = 4
+        loggingConfig.console_level = 1
         
         status = pjsua_init(&config, &loggingConfig, nil)
         guard status == Int32(PJ_SUCCESS.rawValue) else {
@@ -79,14 +94,21 @@ class VoipServicePjsip: VoipService {
             throw VoipServiceError.InitializationError(message: "Error when calling pjsua_start().")
         }
         
+        pjsuaActive = true
+        
         NSLog("VoIP service initialized with success!")
     }
     
     func destroy() {
         NSLog("Destroy the VoIP service...")
+        isDestroying = true
         
-        pjsua_destroy()
+        if pjsuaActive {
+            pjsua_destroy()
+            pjsuaActive = false
+        }
         
+        isDestroying = false
         NSLog("VoIP service destroyed.")
     }
     
@@ -116,7 +138,11 @@ class VoipServicePjsip: VoipService {
     func closeConnection() {
         NSLog("Close the connection...")
         
+        isInConference = false
+        
         pjsua_call_hangup_all()
+        
+        notifyVoipConnectionStateChange(VoipConnectionState.NOT_CONNECTED)
         
         NSLog("Connection closed.")
     }
@@ -124,5 +150,36 @@ class VoipServicePjsip: VoipService {
     func getVoipConnectionState() -> VoipConnectionState {
         //TODO
         return VoipConnectionState.NOT_CONNECTED
+    }
+    
+    // MARK: Handle events
+    
+    private func notifyVoipConnectionStateChange(state: VoipConnectionState) {
+        if currentVoipConnectionState == state {
+            return
+        }
+    
+        NSLog("notifyVoipConnectionStateChange : \(state)")
+        currentVoipConnectionState = state;
+    
+        listener(state: currentVoipConnectionState)
+    }
+    
+    private func onRegistrationSuccess(acc_id: pjsua_acc_id) {
+        if !isInConference && !isDestroying {
+            var uri = pj_str(UnsafeMutablePointer<Int8>(NSString(string: "sip:2@192.168.85.1").UTF8String))
+            var callSetting = pjsua_call_setting()
+            pjsua_call_setting_default(&callSetting)
+            let status2 = pjsua_call_make_call(acc_id, &uri, &callSetting, nil, nil, nil)
+            if status2 != Int32(PJ_SUCCESS.rawValue) {
+                NSLog("Unable to call sip:2@192.168.85.1.")
+            }
+            
+            isInConference = true
+        }
+    }
+    
+    private func onCallOnGoing() {
+        notifyVoipConnectionStateChange(VoipConnectionState.ONGOING_CALL)
     }
 }

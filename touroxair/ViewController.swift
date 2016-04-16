@@ -20,8 +20,8 @@ class ViewController: UIViewController, iCarouselDataSource, iCarouselDelegate {
     @IBOutlet weak var stepDescriptionLabel: UILabel!
     @IBOutlet weak var volumeControl: VolumeControl!
     
-    override func viewDidLoad() {
-        super.viewDidLoad()
+    override func viewWillAppear(animated: Bool) {
+        super.viewWillAppear(animated)
         
         // Initialize the background
         updateGradientBackground()
@@ -80,6 +80,14 @@ class ViewController: UIViewController, iCarouselDataSource, iCarouselDelegate {
                 showUnrecoverableErrorDialog("Internal error", message: "Unable to load the VoIP service! You may try to restart the application, but if it still doesn\'t work it means your device is incompatible.")
             }
         }
+    }
+    
+    override func viewWillDisappear(animated: Bool) {
+        super.viewWillDisappear(animated)
+        
+        let voipService = ApplicationServices.getVoipService()
+        voipService.closeConnection()
+        voipService.destroy()
     }
 
     override func didRotateFromInterfaceOrientation(fromInterfaceOrientation: UIInterfaceOrientation) {

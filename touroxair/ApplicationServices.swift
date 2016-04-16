@@ -10,10 +10,7 @@ import Foundation
 
 // Provide services to the other classes as singletons.
 class ApplicationServices {
-
-    private static let voipService = VoipServicePjsip()
-    
     static func getVoipService() -> VoipService {
-        return voipService
+        return VoipServicePjsip.instance
     }
 }
