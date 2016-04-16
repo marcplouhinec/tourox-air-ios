@@ -136,13 +136,16 @@ class VoipServicePjsip: VoipService {
     func closeConnection() {
         NSLog("Close the connection...")
         
-        isInConference = false
-        
-        pjsua_call_hangup_all()
+        if isInConference {
+            pjsua_call_hangup_all()
+            isInConference = false
+            NSLog("Connection closed.")
+        }
+        else {
+            NSLog("No connection to close.")
+        }
         
         notifyVoipConnectionStateChange(VoipConnectionState.NOT_CONNECTED)
-        
-        NSLog("Connection closed.")
     }
     
     func getVoipConnectionState() -> VoipConnectionState {
