@@ -15,10 +15,15 @@ class ViewController: UIViewController, iCarouselDataSource, iCarouselDelegate {
     
     // MARK: Properties
     let carouselItems: [String] = ["StepCarouselImage1", "StepCarouselImage2"]
-    let errorDialogDelegate = ErrorDialogDelegate()
     @IBOutlet weak var carousel: iCarousel!
     @IBOutlet weak var stepDescriptionLabel: UILabel!
     @IBOutlet weak var volumeControl: VolumeControl!
+    var errorDialogDelegate : ErrorDialogDelegate?
+    
+    required init?(coder: NSCoder) {
+        super.init(coder: coder)
+        errorDialogDelegate = ErrorDialogDelegate(viewController: self)
+    }
     
     override func viewWillAppear(animated: Bool) {
         super.viewWillAppear(animated)
@@ -28,11 +33,48 @@ class ViewController: UIViewController, iCarouselDataSource, iCarouselDelegate {
         
         // Initialize the carousel
         carousel.type = .Rotary
-        onVoipConnectionStateChanged(.NOT_CONNECTED)
         
         // Initialize the volume control
         let mpVolumeView = MPVolumeView(frame: volumeControl.bounds)
         volumeControl.addSubview(mpVolumeView)
+        
+        // Start the VoIP service
+        startVoip()
+    }
+    
+    override func viewWillDisappear(animated: Bool) {
+        super.viewWillDisappear(animated)
+        stopVoip()
+    }
+
+    override func didRotateFromInterfaceOrientation(fromInterfaceOrientation: UIInterfaceOrientation) {
+        updateGradientBackground()
+    }
+    
+    // Add or update a radial gradient background to the view
+    private func updateGradientBackground() {
+        let screenCentre = CGPointMake(self.view.frame.size.width / 2, self.view.frame.size.height/2)
+        let innerColour = UIColor(red: 102/255, green: 102/255, blue: 102/255, alpha: 1.0).CGColor
+        let outterColour = UIColor.blackColor().CGColor
+        let radialGradientBackground = RadialGradientLayer(center: screenCentre, radius: CGFloat(self.view.frame.size.width * 0.9), colors: [innerColour, outterColour])
+        radialGradientBackground.frame = self.view!.bounds
+        if let sublayers = self.view!.layer.sublayers where !sublayers.isEmpty && sublayers[0] is RadialGradientLayer {
+            self.view!.layer.replaceSublayer(sublayers[0], with: radialGradientBackground)
+        }
+        else {
+            self.view!.layer.insertSublayer(radialGradientBackground, atIndex: 0)
+        }
+
+        radialGradientBackground.setNeedsDisplay()
+    }
+    
+    // MARK: VoIP
+    
+    // Initialize the VoipService and handle errors
+    private func startVoip() {
+        NSLog("Start VoIP...")
+        
+        onVoipConnectionStateChanged(.NOT_CONNECTED)
         
         // Get the current IP address of the WIFI connection and check it is correct
         let wifiAddress = NetworkUtils.getWiFiAddress();
@@ -80,55 +122,45 @@ class ViewController: UIViewController, iCarouselDataSource, iCarouselDelegate {
                 showUnrecoverableErrorDialog("Internal error", message: "Unable to load the VoIP service! You may try to restart the application, but if it still doesn\'t work it means your device is incompatible.")
             }
         }
+        
+        NSLog("VoIP started.")
     }
     
-    override func viewWillDisappear(animated: Bool) {
-        super.viewWillDisappear(animated)
+    private func stopVoip() {
+        NSLog("Stop VoIP...")
         
         let voipService = ApplicationServices.getVoipService()
         voipService.closeConnection()
         voipService.destroy()
-    }
-
-    override func didRotateFromInterfaceOrientation(fromInterfaceOrientation: UIInterfaceOrientation) {
-        updateGradientBackground()
+        
+        NSLog("VoIP stopped.")
     }
     
-    // Add or update a radial gradient background to the view
-    func updateGradientBackground() {
-        let screenCentre = CGPointMake(self.view.frame.size.width / 2, self.view.frame.size.height/2)
-        let innerColour = UIColor(red: 102/255, green: 102/255, blue: 102/255, alpha: 1.0).CGColor
-        let outterColour = UIColor.blackColor().CGColor
-        let radialGradientBackground = RadialGradientLayer(center: screenCentre, radius: CGFloat(self.view.frame.size.width * 0.9), colors: [innerColour, outterColour])
-        radialGradientBackground.frame = self.view!.bounds
-        if let sublayers = self.view!.layer.sublayers where !sublayers.isEmpty && sublayers[0] is RadialGradientLayer {
-            self.view!.layer.replaceSublayer(sublayers[0], with: radialGradientBackground)
-        }
-        else {
-            self.view!.layer.insertSublayer(radialGradientBackground, atIndex: 0)
-        }
-
-        radialGradientBackground.setNeedsDisplay()
+    // Restart the VoipService
+    private func restartVoip() {
+        stopVoip()
+        startVoip()
     }
     
     // MARK: Error message
     
     class ErrorDialogDelegate: NSObject, UIAlertViewDelegate {
+        let viewController: ViewController
+        
+        init(viewController: ViewController) {
+            self.viewController = viewController
+        }
+        
         func alertView(alertView: UIAlertView, clickedButtonAtIndex buttonIndex: Int) {
-            // There is only one button: "ignore", so make sure the user understands that he cannot go further
-            let alert = UIAlertView()
-            alert.title = "Ignore an error"
-            alert.message = "You chose to ignore an error. Please note that the application cannot run normally."
-            alert.addButtonWithTitle("Dismiss")
-            alert.show()
+            self.viewController.restartVoip()
         }
     }
     
-    func showUnrecoverableErrorDialog(title: String, message: String) {
+    private func showUnrecoverableErrorDialog(title: String, message: String) {
         let alert = UIAlertView()
         alert.title = title
         alert.message = message
-        alert.addButtonWithTitle("Ignore")
+        alert.addButtonWithTitle("Restart")
         alert.delegate = errorDialogDelegate
         alert.show()
     }
@@ -163,7 +195,7 @@ class ViewController: UIViewController, iCarouselDataSource, iCarouselDelegate {
         return value
     }
 
-    func onVoipConnectionStateChanged(state: VoipConnectionState) {
+    private func onVoipConnectionStateChanged(state: VoipConnectionState) {
         switch state {
         case .NOT_CONNECTED:
             carousel.scrollToItemAtIndex(0, animated: true)

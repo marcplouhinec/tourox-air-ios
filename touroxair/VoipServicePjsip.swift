@@ -148,8 +148,7 @@ class VoipServicePjsip: VoipService {
     }
     
     func getVoipConnectionState() -> VoipConnectionState {
-        //TODO
-        return VoipConnectionState.NOT_CONNECTED
+        return currentVoipConnectionState
     }
     
     // MARK: Handle events
