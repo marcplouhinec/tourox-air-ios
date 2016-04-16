@@ -19,6 +19,7 @@ class VoipServicePjsip: VoipService {
     var isDestroying = false
     var currentVoipConnectionState = VoipConnectionState.NOT_CONNECTED
     var listener: (state: VoipConnectionState) -> Void = {(state: VoipConnectionState) -> Void in}
+    var currentVolume: Float = 1
     
     private init() {
     }
@@ -151,6 +152,11 @@ class VoipServicePjsip: VoipService {
         return currentVoipConnectionState
     }
     
+    func setVolume(value: Float) {
+        self.currentVolume = value
+        pjsua_conf_adjust_tx_level(0, value)
+    }
+    
     // MARK: Handle events
     
     private func notifyVoipConnectionStateChange(state: VoipConnectionState) {
@@ -180,5 +186,6 @@ class VoipServicePjsip: VoipService {
     
     private func onCallOnGoing() {
         notifyVoipConnectionStateChange(VoipConnectionState.ONGOING_CALL)
+        setVolume(currentVolume)
     }
 }

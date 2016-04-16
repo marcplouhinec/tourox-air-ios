@@ -25,4 +25,7 @@ protocol VoipService {
 
     // Return the current connection state
     func getVoipConnectionState() -> VoipConnectionState
+    
+    // Set the audio volume (0 = muted, 1 = max)
+    func setVolume(value: Float)
 }

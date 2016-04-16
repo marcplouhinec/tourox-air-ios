@@ -7,8 +7,6 @@
 //
 
 import UIKit
-import AVFoundation
-import MediaPlayer
 import iCarousel
 
 class ViewController: UIViewController, iCarouselDataSource, iCarouselDelegate {
@@ -17,7 +15,7 @@ class ViewController: UIViewController, iCarouselDataSource, iCarouselDelegate {
     let carouselItems: [String] = ["StepCarouselImage1", "StepCarouselImage2"]
     @IBOutlet weak var carousel: iCarousel!
     @IBOutlet weak var stepDescriptionLabel: UILabel!
-    @IBOutlet weak var volumeControl: VolumeControl!
+    @IBOutlet weak var volumeControl: UISlider!
     var errorDialogDelegate : ErrorDialogDelegate?
     
     required init?(coder: NSCoder) {
@@ -35,8 +33,7 @@ class ViewController: UIViewController, iCarouselDataSource, iCarouselDelegate {
         carousel.type = .Rotary
         
         // Initialize the volume control
-        let mpVolumeView = MPVolumeView(frame: volumeControl.bounds)
-        volumeControl.addSubview(mpVolumeView)
+        volumeControl.value = 1
         
         // Start the VoIP service
         startVoip()
@@ -68,7 +65,12 @@ class ViewController: UIViewController, iCarouselDataSource, iCarouselDelegate {
         radialGradientBackground.setNeedsDisplay()
     }
     
-    // MARK: VoIP
+    // MARK: VoIP and sound management
+    
+    @IBAction func volumeValueChanged(sender: UISlider) {
+        let voipService = ApplicationServices.getVoipService()
+        voipService.setVolume(volumeControl.value)
+    }
     
     // Initialize the VoipService and handle errors
     private func startVoip() {
