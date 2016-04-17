@@ -17,4 +17,4 @@ unable_to_load_voip_service_error_title="Системна грешка";
 unable_to_load_voip_service_error_message="Неуспешно зареждане на VoIP услуга! Опитайте да рестартирате приложението, но ако това не помогне, вероятно телефонът ви не е съвместим.";
 unable_to_open_connection_to_voip_service_error_title="Грешка при свързване";
 unable_to_open_connection_to_voip_service_error_message="Неуспешно установяване на връзка с гласовата услуга. Моля, рестартирайте приложението, за да започнете отначало.";
-restart_button="Рестартирам";
+restart_button="Рестартиране";
