@@ -193,6 +193,7 @@
 				TargetAttributes = {
 					9C8FB22E1CA9552800A08280 = {
 						CreatedOnToolsVersion = 7.3;
+						DevelopmentTeam = H4XMSZ64QD;
 					};
 				};
 			};
@@ -427,6 +428,8 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				ENABLE_BITCODE = NO;
 				INFOPLIST_FILE = touroxair/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
@@ -445,6 +448,8 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				ENABLE_BITCODE = NO;
 				INFOPLIST_FILE = touroxair/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
