@@ -26,7 +26,7 @@ class NetworkUtils {
                 
                 // Check for IPv4 or IPv6 interface:
                 let addrFamily = interface.ifa_addr.memory.sa_family
-                if addrFamily == UInt8(AF_INET) || addrFamily == UInt8(AF_INET6) {
+                if addrFamily == UInt8(AF_INET) {
                     
                     // Check interface name:
                     if let name = String.fromCString(interface.ifa_name) where name == "en0" {
