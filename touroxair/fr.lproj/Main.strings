@@ -1,11 +1,11 @@
 
-/* Class = "UILabel"; text = "…"; ObjectID = "QCO-bJ-exi"; */
-"QCO-bJ-exi.text" = "…";
+/* Class = "UILabel"; text = "..."; ObjectID = "QCO-bJ-exi"; */
+"QCO-bJ-exi.text" = "...";
 
 /* Class = "UIImageView"; accessibilityLabel = "Tourox"; ObjectID = "QlU-Y8-kJn"; */
 "QlU-Y8-kJn.accessibilityLabel" = "Tourox";
 
-/* Class = "UILabel"; text = "Ecoutez votre guide confortablement!"; ObjectID = "RhK-n7-Cqd"; */
+/* Class = "UILabel"; text = "Listen to your guide comfortably!"; ObjectID = "RhK-n7-Cqd"; */
 "RhK-n7-Cqd.text" = "Ecoutez votre guide confortablement!";
 
 /* Class = "UIImageView"; accessibilityLabel = "Volume up"; ObjectID = "a1A-xx-eYO"; */
@@ -14,5 +14,5 @@
 /* Class = "UIImageView"; accessibilityLabel = "Volume down"; ObjectID = "iVe-7G-cHk"; */
 "iVe-7G-cHk.accessibilityLabel" = "Diminution du volume";
 
-/* Class = "UIView"; accessibilityLabel = "Application step"; ObjectID = "odo-4L-IYh"; */
-"odo-4L-IYh.accessibilityLabel" = "Etape de l\'application";
+/* Class = "UIImageView"; accessibilityLabel = "Application step"; ObjectID = "nCT-zv-fLQ"; */
+"nCT-zv-fLQ.accessibilityLabel" = "Etape de l\'application";

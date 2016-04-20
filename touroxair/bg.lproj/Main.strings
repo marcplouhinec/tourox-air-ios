@@ -14,5 +14,5 @@
 /* Class = "UIImageView"; accessibilityLabel = "Volume down"; ObjectID = "iVe-7G-cHk"; */
 "iVe-7G-cHk.accessibilityLabel" = "Намаляване на звука";
 
-/* Class = "UIView"; accessibilityLabel = "Application step"; ObjectID = "odo-4L-IYh"; */
-"odo-4L-IYh.accessibilityLabel" = "Автоматични настройки";
+/* Class = "UIImageView"; accessibilityLabel = "Application step"; ObjectID = "nCT-zv-fLQ"; */
+"nCT-zv-fLQ.accessibilityLabel" = "Автоматични настройки";

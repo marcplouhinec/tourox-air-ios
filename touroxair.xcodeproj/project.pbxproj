@@ -27,12 +27,9 @@
 /* Begin PBXFileReference section */
 		577665B5EAB53C23F4852330 /* Pods-touroxair.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-touroxair.release.xcconfig"; path = "Pods/Target Support Files/Pods-touroxair/Pods-touroxair.release.xcconfig"; sourceTree = "<group>"; };
 		92F6A7A2A01CFBF21D175936 /* Pods_touroxair.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_touroxair.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		9C36CCD71CC2D7A00029F7D2 /* fr */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = fr; path = fr.lproj/Main.strings; sourceTree = "<group>"; };
 		9C36CCD81CC2DBA00029F7D2 /* Base */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = Base; path = Base.lproj/Localizable.strings; sourceTree = "<group>"; };
-		9C449E551CC2DCCC00B0FFE1 /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/Main.strings"; sourceTree = "<group>"; };
 		9C449E561CC2DCCC00B0FFE1 /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/LaunchScreen.strings"; sourceTree = "<group>"; };
 		9C449E571CC2DCCC00B0FFE1 /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/Localizable.strings"; sourceTree = "<group>"; };
-		9C54375A1CC2DF3A003841B2 /* bg */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = bg; path = bg.lproj/Main.strings; sourceTree = "<group>"; };
 		9C54375B1CC2DF3A003841B2 /* bg */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = bg; path = bg.lproj/LaunchScreen.strings; sourceTree = "<group>"; };
 		9C54375C1CC2DF3A003841B2 /* bg */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = bg; path = bg.lproj/Localizable.strings; sourceTree = "<group>"; };
 		9C6EE67D1CC24E9600B76F5C /* VoipServicePjsip.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VoipServicePjsip.swift; sourceTree = "<group>"; };
@@ -50,6 +47,9 @@
 		9C8FB23E1CA9552800A08280 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		9C8FB2441CA9754B00A08280 /* RadialGradientLayer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RadialGradientLayer.swift; sourceTree = "<group>"; };
 		9C9A7BA31CB5A6C500E79685 /* NetworkUtils.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NetworkUtils.swift; sourceTree = "<group>"; };
+		9CDD9AF41CC81EF500868A0A /* fr */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = fr; path = fr.lproj/Main.strings; sourceTree = "<group>"; };
+		9CDD9AF51CC81EFC00868A0A /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/Main.strings"; sourceTree = "<group>"; };
+		9CDD9AF61CC81F0200868A0A /* bg */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = bg; path = bg.lproj/Main.strings; sourceTree = "<group>"; };
 		9CE8FAF01CB8EAE200E56457 /* VoipService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VoipService.swift; sourceTree = "<group>"; };
 		9CF3D0571CB1307600ACBF47 /* VoipConnectionState.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VoipConnectionState.swift; sourceTree = "<group>"; };
 		9CF3D0591CB1582D00ACBF47 /* VolumeControl.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VolumeControl.swift; sourceTree = "<group>"; };
@@ -316,9 +316,9 @@
 			isa = PBXVariantGroup;
 			children = (
 				9C8FB2371CA9552800A08280 /* Base */,
-				9C36CCD71CC2D7A00029F7D2 /* fr */,
-				9C449E551CC2DCCC00B0FFE1 /* zh-Hans */,
-				9C54375A1CC2DF3A003841B2 /* bg */,
+				9CDD9AF41CC81EF500868A0A /* fr */,
+				9CDD9AF51CC81EFC00868A0A /* zh-Hans */,
+				9CDD9AF61CC81F0200868A0A /* bg */,
 			);
 			name = Main.storyboard;
 			sourceTree = "<group>";

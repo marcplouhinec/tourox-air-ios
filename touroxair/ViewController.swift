@@ -7,13 +7,12 @@
 //
 
 import UIKit
-import iCarousel
 
-class ViewController: UIViewController, iCarouselDataSource, iCarouselDelegate {
+class ViewController: UIViewController {
     
     // MARK: Properties
-    let carouselItems: [String] = ["StepCarouselImage1", "StepCarouselImage2"]
-    @IBOutlet weak var carousel: iCarousel!
+    let carouselItems: [String] = ["StepImage1", "StepImage2"]
+    @IBOutlet weak var stepImage: UIImageView!
     @IBOutlet weak var stepDescriptionLabel: UILabel!
     @IBOutlet weak var volumeControl: UISlider!
     var errorDialogDelegate : ErrorDialogDelegate?
@@ -28,9 +27,6 @@ class ViewController: UIViewController, iCarouselDataSource, iCarouselDelegate {
         
         // Initialize the background
         updateGradientBackground()
-        
-        // Initialize the carousel
-        carousel.type = .Rotary
         
         // Initialize the volume control
         volumeControl.value = 1
@@ -167,46 +163,18 @@ class ViewController: UIViewController, iCarouselDataSource, iCarouselDelegate {
         alert.show()
     }
     
-    // MARK: iCarousel
-    
-    func numberOfItemsInCarousel(carousel: iCarousel) -> Int {
-        return carouselItems.count
-    }
-    
-    func carousel(carousel: iCarousel, viewForItemAtIndex index: Int, reusingView view: UIView?) -> UIView {
-        var itemView: UIImageView
-        
-        //create new view if no view is available for recycling
-        if (view == nil) {
-            itemView = UIImageView(frame:CGRect(x:0, y:0, width:160, height:160))
-            itemView.image = UIImage(named: carouselItems[index])
-            itemView.contentMode = .ScaleToFill
-        }
-        else
-        {
-            itemView = view as! UIImageView;
-        }
-        
-        return itemView
-    }
-    
-    func carousel(carousel: iCarousel, valueForOption option: iCarouselOption, withDefault value: CGFloat) -> CGFloat {
-        if (option == .Spacing) {
-            return value * 4
-        }
-        return value
-    }
+    // MARK: Steps
 
     private func onVoipConnectionStateChanged(state: VoipConnectionState) {
         switch state {
         case .NOT_CONNECTED:
-            carousel.scrollToItemAtIndex(0, animated: true)
+            stepImage.image = UIImage(named: carouselItems[0])
             stepDescriptionLabel.text = NSLocalizedString("step1_description", comment: "Connecting to the router…")
         case .UNABLE_TO_CONNECT:
-            carousel.scrollToItemAtIndex(0, animated: true)
+            stepImage.image = UIImage(named: carouselItems[0])
             stepDescriptionLabel.text = NSLocalizedString("step1_error_description", comment: "Error: unable to connect with the router VoIP!")
         case .ONGOING_CALL:
-            carousel.scrollToItemAtIndex(1, animated: true)
+            stepImage.image = UIImage(named: carouselItems[1])
             stepDescriptionLabel.text = NSLocalizedString("step2_description", comment: "Communication ongoing")
         }
     }
