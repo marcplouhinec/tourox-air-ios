@@ -14,7 +14,7 @@
             buildForArchiving = "YES">
             <BuildableReference
                BuildableIdentifier = 'primary'
-               BlueprintIdentifier = '9A7F3C50FB544FCD79B4BDD6'
+               BlueprintIdentifier = 'CC9A869BDFA66F6D09006CA5'
                BlueprintName = 'Pods-touroxair'
                ReferencedContainer = 'container:Pods.xcodeproj'
                BuildableName = 'Pods_touroxair.framework'>
